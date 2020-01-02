@@ -4,20 +4,27 @@ using System.Text;
 
 namespace Reservation {
     class ReservationUseCase {
-
         public 予約結果 Reserve(int year, int コマ数) { 
-            var 予約する時必要な情報 = new 予約する時必要な情報(new MeetingRoom(),
-                                                                new ReserverId(),
-                                                                new 時間に関するなにがし(),
-                                                                new 想定使用人数());
+            var 予約希望 = 予約希望(4つの情報); 
 
-            //todo: ビジネスルール：他の予約枠が被っている場合は、予約ができなくて、エラーとなる
-            //todo: ビジネスルール：同一の人物が、同じ時間帯の複数の会議室に参加できないようにするか？？
-
-            // todo:誰が予約結果作ってくれるの？？
-            var 予約結果 = 予約する時必要な情報.予約(); //todo
+            var 予約結果 = 予約希望.申請(); 
 
             return 予約結果;
+        }
+
+        public 予約結果 Reserve2(int year, int コマ数) { 
+            var 予約希望 = 予約希望(4つの情報);
+
+            var 完全予約 = 予約希望.申請();  
+
+            return おBarちゃん.管理簿にちゃんと記録する(完全予約);
+        }
+
+        public 予約結果 Reserve3(int year, int コマ数) { 
+            var 予約希望 = 予約希望(4つの情報);
+            var 管理簿 = 管理簿();
+            var 完全予約 = 予約希望.チェック(管理簿);
+            return 管理簿.記録する(完全予約);
         }
     }
 }

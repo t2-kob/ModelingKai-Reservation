@@ -8,5 +8,8 @@ namespace Reservation {
         private readonly 予約開始時刻 jikoku; // e.g. 13:00
         private readonly コマ数 koma; // e.g. 12コマ(3時間)
 
+        //todo: ビジネスルール：10:00-19:00までしか予約が出来ない
+        //todo: ビジネスルール：使える時間の長さは15分単位
+        //todo: ビジネスルール：30日以内までしか予約できない
     }
 }

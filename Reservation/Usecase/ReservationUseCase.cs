@@ -7,8 +7,10 @@ namespace Reservation.Usecase {
     class ReservationUseCase {
         public bool Reserve(int year, int コマ数) {
             
-            var 予約希望 = new 予約希望(4つの情報);
-
+            var 予約希望 = new 予約希望(new MeetingRoom(),
+                                    new ReserverId(),
+                                    new 時間に関するなにがし(),
+                                    new 想定使用人数());
             var 予約結果 = 予約希望.申請(); 
 
             //TODO: 返すのはプリミティブ？予約結果？　とりあえず一旦プリミティブで。

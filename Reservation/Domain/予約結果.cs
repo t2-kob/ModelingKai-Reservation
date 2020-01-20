@@ -1,7 +1,9 @@
 ﻿namespace Reservation.Domain {
     public class 予約結果 {
 
-        public 予約結果() {
+        private bool result;
+        public 予約結果(bool result) {
+            this.result = result;
             // todo:中身は何がある？ 成功失敗？　取れた日時？
             // todo:どういう情報を返す？
         }

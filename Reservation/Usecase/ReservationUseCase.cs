@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Reservation.Domain;
 
-namespace Reservation {
+namespace Reservation.Usecase {
     class ReservationUseCase {
         public 予約結果 Reserve(int year, int コマ数) { 
             var 予約希望 = 予約希望(4つの情報); 

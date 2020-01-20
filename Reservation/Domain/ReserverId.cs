@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Reservation {
+namespace Reservation.Domain {
     public class ReserverId {
 
 

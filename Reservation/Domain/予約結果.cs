@@ -1,4 +1,4 @@
-﻿namespace Reservation {
+﻿namespace Reservation.Domain {
     public class 予約結果 {
 
         public 予約結果() {

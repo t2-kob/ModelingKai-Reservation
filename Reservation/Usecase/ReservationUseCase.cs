@@ -5,27 +5,29 @@ using Reservation.Domain;
 
 namespace Reservation.Usecase {
     class ReservationUseCase {
-        public 予約結果 Reserve(int year, int コマ数) { 
-            var 予約希望 = 予約希望(4つの情報); 
+        public bool Reserve(int year, int コマ数) {
+            
+            var 予約希望 = new 予約希望(4つの情報);
 
             var 予約結果 = 予約希望.申請(); 
 
-            return 予約結果;
+            //TODO: 返すのはプリミティブ？予約結果？　とりあえず一旦プリミティブで。
+            return false;
         }
 
-        public 予約結果 Reserve2(int year, int コマ数) { 
-            var 予約希望 = 予約希望(4つの情報);
+        //public 予約結果 Reserve2(int year, int コマ数) { 
+        //    var 予約希望 = 予約希望(4つの情報);
 
-            var 完全予約 = 予約希望.申請();  
+        //    var 完全予約 = 予約希望.申請();  
 
-            return おBarちゃん.管理簿にちゃんと記録する(完全予約);
-        }
+        //    return おBarちゃん.管理簿にちゃんと記録する(完全予約);
+        //}
 
-        public 予約結果 Reserve3(int year, int コマ数) { 
-            var 予約希望 = 予約希望(4つの情報);
-            var 管理簿 = 管理簿();
-            var 完全予約 = 予約希望.チェック(管理簿);
-            return 管理簿.記録する(完全予約);
-        }
+        //public 予約結果 Reserve3(int year, int コマ数) { 
+        //    var 予約希望 = 予約希望(4つの情報);
+        //    var 管理簿 = 管理簿();
+        //    var 完全予約 = 予約希望.チェック(管理簿);
+        //    return 管理簿.記録する(完全予約);
+        //}
     }
 }

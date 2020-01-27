@@ -15,19 +15,6 @@ namespace Test
             Assert.NotNull(repository);
         }
 
-        // メソッド名にtrueとかが入っているのが変
-        //[Fact]
-        // public void 空きが確認できたらtrueを返す()
-        // {
-        //     I予約希望Repository repository = new 予約希望Repository();
-        //     // TODO:仮実装
-
-        //     bool result = repository.空きを確認する(null, null, null, null);
-
-        //     Assert.True(result);
-        // }
-
-
         [Fact]
         public void 利用したい会議室が_先約がなければ_予約可能状態であることが分かる()
         {

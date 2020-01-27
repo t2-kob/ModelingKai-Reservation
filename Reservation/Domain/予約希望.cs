@@ -17,7 +17,7 @@
             // やることは、保存する段階
 
             // 時間と部屋の組み合わせが被っているかどうか
-            if(!repository.空きを確認する(room, id, range, ninzu))
+            if(!repository.この会議室が予約可能かどうか教えて(room, id, range, ninzu))
             {
                 repository.Save(room, id, range,ninzu);
                 return new 予約結果(true); 

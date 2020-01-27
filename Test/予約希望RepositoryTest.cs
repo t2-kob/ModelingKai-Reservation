@@ -16,32 +16,38 @@ namespace Test
         }
 
         // メソッド名にtrueとかが入っているのが変
+        //[Fact]
+        // public void 空きが確認できたらtrueを返す()
+        // {
+        //     I予約希望Repository repository = new 予約希望Repository();
+        //     // TODO:仮実装
+
+        //     bool result = repository.空きを確認する(null, null, null, null);
+
+        //     Assert.True(result);
+        // }
+
+
         [Fact]
-        public void 空きが確認できたらtrueを返す()
+        public void 利用したい会議室が_先約がなければ_予約可能状態であることが分かる()
         {
-            I予約希望Repository repository = new 予約希望Repository();
-            // TODO:仮実装
+            // ・予約可能かどうかが判定できる
+            // 　・先約がなけれれば、予約可能ってわかる
+            // 　・先約があるとkは、予約できないよ
+            // 　・(他にも予約できない場合はあるかもしれないが、それはドメインエキスパートに聞こう！ 例えば、雨漏りがあって会議室が予約も使用もできないとか)
 
-            bool result = repository.空きを確認する(null, null, null, null);
-
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void 使いたい部屋が空いていた場合のテスト()
-        {
             I予約希望Repository repository = new 予約希望Repository();
 
             // TODO:trueを返すのはちょっと変
-            Assert.Equal(repository.空きを確認する(null, null, null, null), true);
+            Assert.Equal(repository.この会議室が予約可能かどうか教えて(null, null, null, null), true);
         }
 
         [Fact]
-        public void 使いたい部屋が空いてなかった場合のテスト()
+        public void 利用したい会議室が_先約があったら_予約不能状態であることが分かる()
         {
             I予約希望Repository repository = new 予約希望Repository();
 
-            Assert.Equal(repository.空きを確認する(null, null, null, null), false); 
+            Assert.Equal(repository.この会議室が予約可能かどうか教えて(null, null, null, null), false); 
         }
 
         // 確認をする

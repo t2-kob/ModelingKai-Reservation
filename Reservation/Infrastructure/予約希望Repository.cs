@@ -10,7 +10,7 @@ namespace Infrastructure
             throw new System.NotImplementedException();
         }
 
-        public bool 空きを確認する(MeetingRoom room, ReserverId id, 時間に関するなにがし range, 想定使用人数 ninzu)
+        public bool この会議室が予約可能かどうか教えて(MeetingRoom room, ReserverId id, 時間に関するなにがし range, 想定使用人数 ninzu)
         {
             // 1.仮実装とテスト
             // 2.ガチ実装

@@ -1,12 +1,9 @@
 ﻿namespace Reservation.Domain {
     public class 予約希望 {
         I予約希望Repository repository;
-
         private readonly MeetingRoom room;
         private readonly ReserverId id;
-
         private readonly 時間に関するなにがし range;
-
         private readonly 想定使用人数 ninzu;
 
         public 予約希望(MeetingRoom room, ReserverId id,時間に関するなにがし range, 想定使用人数 ninzu) { 

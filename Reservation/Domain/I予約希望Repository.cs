@@ -10,6 +10,8 @@ namespace Reservation.Domain
                     想定使用人数 ninzu);
         // TODO:エンティティは知ってていいか？
         // TODO:値オブジェクトならワンチャン
+        
+        // masuda派はFind派
         bool 空きを確認する(MeetingRoom room,
                         ReserverId id,
                         時間に関するなにがし range,

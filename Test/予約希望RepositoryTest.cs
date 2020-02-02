@@ -45,6 +45,7 @@ namespace Test
         [Fact]
         public void Aという会議室を予約する()
         {
+            // このメソッドの中で
             I予約希望Repository repository = new 予約希望Repository();
 
             var room = new MeetingRoom(MeetingRoomName.A);
@@ -52,5 +53,19 @@ namespace Test
             
             repository.Save(room, null, range, null);
         }
+
+
+        // Aという会議室を予約するものは何やねん？？？
+        // →　なにをアサーションすることは何だろう？
+
+        // テストとアサーション
+
+        // 確認すべきこと＝アサーション
+        // アサーションのないテスト
+        // テストケース
+
+        // なんにも確認しないテスト。とは→　とにかくエラーが起きないこと。
+        // なにも起きなかった。例外が起きなかったこと。
+        // 
     }
 }

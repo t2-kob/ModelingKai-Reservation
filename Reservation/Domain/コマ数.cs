@@ -1,4 +1,4 @@
 ﻿namespace Reservation.Domain {
-    internal class コマ数 {
+    public class コマ数 {
     }
 }

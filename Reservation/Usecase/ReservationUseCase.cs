@@ -7,9 +7,9 @@ namespace Reservation.Usecase {
     class ReservationUseCase {
         public bool Reserve(int year, int コマ数) {
             
-            var 予約希望 = new 予約希望(new MeetingRoom(),
+            var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
                                     new ReserverId(),
-                                    new 時間に関するなにがし(),
+                                    new ReservationRange(null, null,null),
                                     new 想定使用人数());
             var 予約結果 = 予約希望.申請(); 
 

@@ -1,4 +1,4 @@
 ﻿namespace Reservation.Domain {
-    internal class 予約開始時刻 {
+    public class 予約開始時刻 {
     }
 }

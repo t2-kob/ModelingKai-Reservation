@@ -43,17 +43,30 @@ namespace Test
 
         // TODO:Saveのテストも書く
         [Fact]
+        public void Aという会議室を予約して失敗する()
+        {
+            // このメソッドの中で
+            I予約希望Repository repository = new 予約希望Repository();
+
+            var room = new MeetingRoom(MeetingRoomName.A);
+
+            var ex = Assert.Throws<ArgumentException>(() => {
+                var range = new 予約期間(null, 予約開始_時._18, 予約開始_分._15, new コマ数(4));
+                repository.Save(room, null, range, null);
+            });
+        }
+
+        [Fact]
         public void Aという会議室を予約する()
         {
             // このメソッドの中で
             I予約希望Repository repository = new 予約希望Repository();
 
             var room = new MeetingRoom(MeetingRoomName.A);
-            var range = new 予約期間(null, null, null);
+            var range = new 予約期間(null, 予約開始_時._18, 予約開始_分._15, new コマ数(3));
             
             repository.Save(room, null, range, null);
         }
-
 
         // Aという会議室を予約するものは何やねん？？？
         // →　なにをアサーションすることは何だろう？

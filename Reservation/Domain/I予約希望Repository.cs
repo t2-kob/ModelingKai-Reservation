@@ -4,7 +4,7 @@ namespace Reservation.Domain
     {
         void Save(MeetingRoom room,
                     ReserverId id,
-                    ReservationRange range,
+                    予約期間 range,
                     想定使用人数 ninzu);
         // TODO:エンティティは知ってていいか？
         // TODO:値オブジェクトならワンチャン
@@ -12,7 +12,7 @@ namespace Reservation.Domain
         // masuda派はFind派
         bool この会議室が予約可能かどうか教えて(MeetingRoom room,
                         ReserverId id,
-                        ReservationRange range,
+                        予約期間 range,
                         想定使用人数 ninzu);
         // リポジトリは、ドメインがやりたいことを実現する？
         // やりたいことをセーブ？　

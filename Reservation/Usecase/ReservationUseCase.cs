@@ -9,7 +9,7 @@ namespace Reservation.Usecase {
             
             var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
                                     new ReserverId(),
-                                    new ReservationRange(null, null,null),
+                                    new 予約期間(null, null,null),
                                     new 想定使用人数());
             var 予約結果 = 予約希望.申請(); 
 

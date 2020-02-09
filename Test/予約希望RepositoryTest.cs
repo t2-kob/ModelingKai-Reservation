@@ -49,7 +49,7 @@ namespace Test
             I予約希望Repository repository = new 予約希望Repository();
 
             var room = new MeetingRoom(MeetingRoomName.A);
-            var range = new ReservationRange(null, null, null);
+            var range = new 予約期間(null, null, null);
             
             repository.Save(room, null, range, null);
         }

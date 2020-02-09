@@ -12,9 +12,9 @@ namespace Reservation.Domain {
 
         public コマ数(int value)
         {
-            if(value <= 0 )
+            if (value <= 0)
                 throw new ArgumentException(nameof(value));
-            
+
             this.Value = value;
         }
 

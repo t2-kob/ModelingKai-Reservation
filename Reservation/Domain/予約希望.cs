@@ -3,10 +3,10 @@
         I予約希望Repository repository;
         private readonly MeetingRoom room;
         private readonly ReserverId id;
-        private readonly ReservationRange range;
+        private readonly 予約期間 range;
         private readonly 想定使用人数 ninzu;
 
-        public 予約希望(MeetingRoom room, ReserverId id,ReservationRange range, 想定使用人数 ninzu) { 
+        public 予約希望(MeetingRoom room, ReserverId id,予約期間 range, 想定使用人数 ninzu) { 
             this.room = room;
             this.id = id;
             this.range = range;

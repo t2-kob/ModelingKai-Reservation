@@ -51,7 +51,7 @@ namespace Test
             var room = new MeetingRoom(MeetingRoomName.A);
 
             var ex = Assert.Throws<ArgumentException>(() => {
-                var range = new 予約期間(null, 予約開始_時._18, 予約開始_分._15, new コマ数(4));
+                var range = new 予約期間(new 予約年月日(2020,2,10), 予約開始_時._18, 予約開始_分._15, new コマ数(4));
                 repository.Save(room, null, range, null);
             });
         }
@@ -63,7 +63,7 @@ namespace Test
             I予約希望Repository repository = new 予約希望Repository();
 
             var room = new MeetingRoom(MeetingRoomName.A);
-            var range = new 予約期間(null, 予約開始_時._18, 予約開始_分._15, new コマ数(3));
+            var range = new 予約期間(new 予約年月日(2020,2,10), 予約開始_時._18, 予約開始_分._15, new コマ数(3));
             
             repository.Save(room, null, range, null);
         }

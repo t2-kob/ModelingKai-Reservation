@@ -18,7 +18,7 @@ namespace Reservation.Domain {
 
             var 残コマ数 = this.残コマ数を教えて(予約開始_時, 予約開始_分);
 
-            if (! 残コマ数.に引数が収まっているか教えて(予約コマ数) )
+            if (! (残コマ数 >= 予約コマ数) )
                 throw new ArgumentException($"{残コマ数}を超えることはできません");
 
             //todo:

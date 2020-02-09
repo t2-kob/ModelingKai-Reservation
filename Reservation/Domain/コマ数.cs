@@ -25,5 +25,24 @@ namespace Reservation.Domain {
         }
         // こいつは,コマの数ではなくて、実は時間を返してあげる必要がある？
 
+        public static bool operator <(コマ数 c1, コマ数 c2)
+        {
+            return c1.Value < c2.Value;
+        }
+        public static bool operator >(コマ数 c1, コマ数 c2)
+        {
+            return c1.Value > c2.Value;
+        }
+
+        public static bool operator <=(コマ数 c1, コマ数 c2)
+        {
+            return c1.Value <= c2.Value;
+        }
+
+        public static bool operator >=(コマ数 c1, コマ数 c2)
+        {
+            return c1.Value >= c2.Value;
+        }
+
     }
 }

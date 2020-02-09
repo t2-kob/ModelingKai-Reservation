@@ -29,16 +29,43 @@ namespace Test
             Assert.Equal(repository.この会議室が予約可能かどうか教えて(null, null, null, null), true);
         }
 
-        [Fact]
-        public void 利用したい会議室が_先約があったら_予約不能状態であることが分かる()
-        {
-            I予約希望Repository repository = new 予約希望Repository();
+        // TODO: Saveメソッドが実装できたら、ここのテストをやります。
+        // [Fact]
+        // public void 利用したい会議室が_先約があったら_予約不能状態であることが分かる()
+        // {
+        //     I予約希望Repository repository = new 予約希望Repository();
 
-            Assert.Equal(repository.この会議室が予約可能かどうか教えて(null, null, null, null), false); 
-        }
+            
+        //     Assert.Equal(repository.この会議室が予約可能かどうか教えて(null, null, null, null), false); 
+        // }
 
         // 確認をする
 
         // TODO:Saveのテストも書く
+        [Fact]
+        public void Aという会議室を予約する()
+        {
+            // このメソッドの中で
+            I予約希望Repository repository = new 予約希望Repository();
+
+            var room = new MeetingRoom(MeetingRoomName.A);
+            var range = new ReservationRange(null, null, null);
+            
+            repository.Save(room, null, range, null);
+        }
+
+
+        // Aという会議室を予約するものは何やねん？？？
+        // →　なにをアサーションすることは何だろう？
+
+        // テストとアサーション
+
+        // 確認すべきこと＝アサーション
+        // アサーションのないテスト
+        // テストケース
+
+        // なんにも確認しないテスト。とは→　とにかくエラーが起きないこと。
+        // なにも起きなかった。例外が起きなかったこと。
+        // 
     }
 }

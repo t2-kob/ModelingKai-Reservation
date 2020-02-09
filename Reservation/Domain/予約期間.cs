@@ -4,8 +4,6 @@ using System.Text;
 
 namespace Reservation.Domain {
     public class 予約期間 {
-        private const int コマあたりの分数 = 15;
-
         private readonly 予約年月日 ReservationDate; // e.g. 2020年1月2日
         private readonly 予約開始_時 予約開始_時; // e.g. 13(時)
         private readonly 予約開始_分 予約開始_分; // e.g. 15(分)
@@ -15,9 +13,7 @@ namespace Reservation.Domain {
         {
             //todo: ビジネスルール：10:00-19:00までしか予約が出来ない
             // 予約開始時刻とコマ数を見て、10:00-19:00までしか予約できないことを確認する
-
-            var 残コマ数 = this.残コマ数を教えて(予約開始_時, 予約開始_分);
-
+            var 残コマ数 = コマ数.ある期間のコマ数を教えて((int)予約開始_時, (int)予約開始_分, 19, 0);
             if (! (残コマ数 >= 予約コマ数) )
                 throw new ArgumentException($"{残コマ数}を超えることはできません");
 
@@ -49,22 +45,5 @@ namespace Reservation.Domain {
         // TODO:開始時刻とコマ数の組み合わせで、終了時刻って実際何時なのか？
         // ↑これいつ必要？
 
-        private コマ数 残コマ数を教えて(予約開始_時 ji, 予約開始_分 fun)
-        {
-            // 開始時刻から、最大何コマ取れるかっていう情報が必要？
-            // 1. 開始時刻から19:00までの取れる最大コマ数を求めて、いまのコマ数を超えてないか
-            // 2. 10:00-19:00まで36コマまで取れます。いまの開始時刻が第nコマ目
-
-            // 18:00が開始時刻だったら、19:00 1h * 4 = 4コマ
-            
-            // TODO:日付と秒は適当
-            // 日付は関係ない！
-            DateTime time = new DateTime(2020, 2, 9, (int)ji, (int)fun, 0);
-            DateTime endTime = new DateTime(2020, 2, 9, 19, 0, 0);
-
-            int miniute = (int)(endTime - time).TotalMinutes;
-            
-            return new コマ数(miniute / コマあたりの分数);
-        }
     }
 }

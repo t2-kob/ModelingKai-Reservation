@@ -56,5 +56,9 @@ namespace Reservation.Domain {
             return c1.Value >= c2.Value;
         }
 
+        internal int 分換算()
+        {
+            return Value * コマあたりの分数;
+        }
     }
 }

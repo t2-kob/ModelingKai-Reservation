@@ -18,6 +18,14 @@ namespace Infrastructure
 
         public bool この会議室が予約可能かどうか教えて(MeetingRoom room, ReserverId id, 予約期間 range, 想定使用人数 ninzu)
         {
+
+            // NG条件: 会議室名がバッティングしている かつ 時間がバッティングしている
+
+
+
+
+
+
             // 予約が不可能な状態とは？
             // いまの予約情報が取れなければいけなくて。
             

@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Reservation.Domain {
     /// <summary>
     /// 年月日だけ持つ
     /// </summary>
-    public class 予約年月日 {
+    public class 予約年月日 : IEquatable<予約年月日> {
         private readonly int year;
         private readonly int month;
         private readonly int day;
@@ -22,6 +23,18 @@ namespace Reservation.Domain {
         {
             // 値オブジェクトの特別感を出すために
             return $"{year}年{month}月{day}日";
+        }
+
+        public bool Equals([AllowNull] 予約年月日 other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            return year == other.year &&
+                   month == other.month &&
+                   day == other.day;
         }
     }
 }

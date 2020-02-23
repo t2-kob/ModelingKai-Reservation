@@ -39,6 +39,43 @@ namespace Reservation.Domain {
             this.koma = 予約コマ数;
         }
 
+
+        private DateTime 開始時刻は何時ですか()
+        {
+            // TODO: 1900年直指定ってどうよ？
+            var result = new DateTime(1900, 1, 1, (int)予約開始_時, (int)予約開始_分, 0);
+            return result;
+
+        }
+        private DateTime 終了時刻は何時ですか() {
+            var 開始時刻 = 開始時刻は何時ですか();
+            var 終了時刻 = 開始時刻.AddMinutes(koma.分換算());
+            return 終了時刻;
+        }
+
+        public bool 時間かぶってますか(予約期間 other) {
+            //開始時間とコマ数
+            bool 時間かぶってますか = (開始時刻は何時ですか() >= other.開始時刻は何時ですか() 
+                                && 開始時刻は何時ですか() < other.終了時刻は何時ですか()) ||
+                             (開始時刻は何時ですか() <= other.開始時刻は何時ですか()
+                                && 終了時刻は何時ですか() > other.開始時刻は何時ですか());
+
+            return 時間かぶってますか;
+        }
+
+
+        internal bool かぶってますか(予約期間 other)
+        {
+            // 年月日ちがったらダメー
+                return false;
+            if (!ReservationDate.Equals(other)) {
+            }
+
+
+
+            return 時間かぶってますか(other);
+        }
+
         //todo: ビジネスルール：30日以内までしか予約できない
 
         // TODO:開始時刻とコマ数の組み合わせで、ちゃんと10:00-19:00の範囲で収まるかどうかを調べたい

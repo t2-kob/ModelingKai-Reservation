@@ -25,12 +25,12 @@ namespace Reservation.Domain {
         }
         // こいつは,コマの数ではなくて、実は時間を返してあげる必要がある？
 
-        public static コマ数 ある期間のコマ数を教えて(int 開始_時, int 開始_分, int 終了_時, int 終了_分)
+        public static コマ数 残コマ数を教えて(予約開始_時 開始_時, 予約開始_分 開始_分)
         {
             // TODO:日付と秒は適当
             // 日付は関係ない！
-            DateTime time = new DateTime(1900, 1, 1, 開始_時, 開始_分, 0);
-            DateTime endTime = new DateTime(1900, 1, 1, 終了_時, 終了_分, 0);
+            DateTime time = new DateTime(1900, 1, 1, (int)開始_時, (int)開始_分, 0);
+            DateTime endTime = new DateTime(1900, 1, 1, 19, 0, 0); // TODO: 予約可能(?)な最終時刻を知っているのは誰？
 
             int miniute = (int)(endTime - time).TotalMinutes;
             

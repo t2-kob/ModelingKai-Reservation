@@ -53,6 +53,11 @@ namespace Reservation.Domain {
             return 終了時刻;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>true:被っている false:被っていない</returns>
         public bool 時間かぶってますか(予約期間 other) {
             //開始時間とコマ数
             bool 時間かぶってますか = (開始時刻は何時ですか() >= other.開始時刻は何時ですか() 
@@ -67,11 +72,9 @@ namespace Reservation.Domain {
         internal bool かぶってますか(予約期間 other)
         {
             // 年月日ちがったらダメー
+            if (!ReservationDate.Equals(other.ReservationDate)) {
                 return false;
-            if (!ReservationDate.Equals(other)) {
             }
-
-
 
             return 時間かぶってますか(other);
         }

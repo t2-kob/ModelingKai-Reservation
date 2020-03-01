@@ -1,3 +1,5 @@
+
+
 using System;
 using Xunit;
 using Reservation.Domain;
@@ -26,7 +28,8 @@ namespace Test
             I予約希望Repository repository = new 予約希望Repository();
 
             // TODO:trueを返すのはちょっと変
-            Assert.Equal(repository.この会議室が予約可能かどうか教えて(null, null, null, null), true);
+            var 予約したい期間 = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._12, 予約開始_分._00, new コマ数(8));
+            Assert.True(repository.この会議室は予約可能ですか(new MeetingRoom(MeetingRoomName.A), null, 予約したい期間, null));
         }
 
         // TODO: Saveメソッドが実装できたら、ここのテストをやります。
@@ -93,7 +96,7 @@ namespace Test
 
             // Execute
             var 予約したい期間 = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._12, 予約開始_分._00, new コマ数(8));
-            var 予約できるかどうか = repository.この会議室が予約可能かどうか教えて(room, null, 予約したい期間, null);
+            var 予約できるかどうか = repository.この会議室は予約可能ですか(room, null, 予約したい期間, null);
 
             Assert.False(予約できるかどうか);
         }

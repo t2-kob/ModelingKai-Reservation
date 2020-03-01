@@ -10,7 +10,7 @@ namespace Reservation.Domain
         // TODO:値オブジェクトならワンチャン
         
         // masuda派はFind派
-        bool この会議室が予約可能かどうか教えて(MeetingRoom room,
+        bool この会議室は予約可能ですか(MeetingRoom room,
                         ReserverId id,
                         予約期間 range,
                         想定使用人数 ninzu);

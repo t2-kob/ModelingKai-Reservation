@@ -16,14 +16,12 @@ namespace Reservation.Domain
         }
 
 
-        public bool かぶってますか(予約された会議室 other) {
+        public bool かぶってますか(予約したい会議室 other) {
             var 会議室いっしょ = room.Equals(other.room);
             var 予約期間かぶり = range.かぶってますか(other.range);
 
             return 会議室いっしょ && 予約期間かぶり;
         }
-
-
         // todo: equalメソッド必要か
     }
 }

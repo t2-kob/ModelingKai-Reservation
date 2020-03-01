@@ -1,4 +1,4 @@
-namespace Reservation.Domain.—\–ñ.‰ï‹cŽº 
+namespace Reservation.Domain.Reservations.MeetingRooms 
 {
     public enum MeetingRoomName 
     {

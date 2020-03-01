@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Reservation.Domain.予約.会議室
+namespace Reservation.Domain.Reservations.MeetingRooms
 {
     /// <summary>
     /// 会議室

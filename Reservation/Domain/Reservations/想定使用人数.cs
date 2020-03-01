@@ -1,4 +1,4 @@
-namespace Reservation.Domain.予約 {
+namespace Reservation.Domain.Reservations {
     public class 想定使用人数 {
 
 

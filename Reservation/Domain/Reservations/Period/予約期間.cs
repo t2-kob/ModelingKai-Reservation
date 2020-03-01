@@ -1,6 +1,6 @@
 using System;
 
-namespace Reservation.Domain.予約.期間 {
+namespace Reservation.Domain.Reservations.Period {
     public class 予約期間 {
         private readonly 予約年月日 ReservationDate; // e.g. 2020年1月2日
         private readonly 予約開始_時 予約開始_時; // e.g. 13(時)

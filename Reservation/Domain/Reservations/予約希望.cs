@@ -1,7 +1,7 @@
-using Reservation.Domain.予約.会議室;
-using Reservation.Domain.予約.期間;
+using Reservation.Domain.Reservations.MeetingRooms;
+using Reservation.Domain.Reservations.Period;
 
-namespace Reservation.Domain.予約
+namespace Reservation.Domain.Reservations
 {
     public class 予約希望
     {

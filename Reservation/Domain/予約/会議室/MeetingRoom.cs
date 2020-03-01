@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
-namespace Reservation.Domain {
+namespace Reservation.Domain.予約.会議室 {
     /// <summary>
     /// 会議室
     /// </summary>

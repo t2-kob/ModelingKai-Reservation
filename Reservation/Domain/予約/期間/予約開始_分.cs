@@ -1,4 +1,4 @@
-namespace Reservation.Domain
+namespace Reservation.Domain.予約.期間
 {
     public enum 予約開始_分
     {

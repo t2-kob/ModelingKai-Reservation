@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Reservation.Domain 
+namespace Reservation.Domain.—\–ñ.‰ï‹cŽº 
 {
     public enum MeetingRoomName 
     {

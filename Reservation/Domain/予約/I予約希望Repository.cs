@@ -1,4 +1,7 @@
-namespace Reservation.Domain
+using Reservation.Domain.予約.会議室;
+using Reservation.Domain.予約.期間;
+
+namespace Reservation.Domain.予約
 {
     public interface I予約希望Repository
     {

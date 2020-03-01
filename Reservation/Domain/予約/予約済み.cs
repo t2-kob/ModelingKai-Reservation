@@ -1,7 +1,7 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
+using Reservation.Domain.予約.会議室;
+using Reservation.Domain.予約.期間;
 
-namespace Reservation.Domain
+namespace Reservation.Domain.予約
 {
     public class 予約済み
     {

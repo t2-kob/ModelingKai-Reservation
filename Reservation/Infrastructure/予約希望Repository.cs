@@ -11,13 +11,21 @@ namespace Infrastructure
     {
         private List<予約された会議室> list = new List<予約された会議室>();
         
-        public void Save(MeetingRoom room, ReserverId id, ReservationRange range, 想定使用人数 ninzu)
+        public void Save(MeetingRoom room, ReserverId id, 予約期間 range, 想定使用人数 ninzu)
         {
             list.Add(new 予約された会議室(room, range));
         }
 
-        public bool この会議室が予約可能かどうか教えて(MeetingRoom room, ReserverId id, ReservationRange range, 想定使用人数 ninzu)
+        public bool この会議室が予約可能かどうか教えて(MeetingRoom room, ReserverId id, 予約期間 range, 想定使用人数 ninzu)
         {
+
+            // NG条件: 会議室名がバッティングしている かつ 時間がバッティングしている
+
+
+
+
+
+
             // 予約が不可能な状態とは？
             // いまの予約情報が取れなければいけなくて。
             

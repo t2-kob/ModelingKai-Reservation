@@ -43,17 +43,30 @@ namespace Test
 
         // TODO:Saveのテストも書く
         [Fact]
+        public void Aという会議室を予約して失敗する()
+        {
+            // このメソッドの中で
+            I予約希望Repository repository = new 予約希望Repository();
+
+            var room = new MeetingRoom(MeetingRoomName.A);
+
+            var ex = Assert.Throws<ArgumentException>(() => {
+                var range = new 予約期間(new 予約年月日(2020,2,10), 予約開始_時._18, 予約開始_分._15, new コマ数(4));
+                repository.Save(room, null, range, null);
+            });
+        }
+
+        [Fact]
         public void Aという会議室を予約する()
         {
             // このメソッドの中で
             I予約希望Repository repository = new 予約希望Repository();
 
             var room = new MeetingRoom(MeetingRoomName.A);
-            var range = new ReservationRange(null, null, null);
+            var range = new 予約期間(new 予約年月日(2020,2,10), 予約開始_時._18, 予約開始_分._15, new コマ数(3));
             
             repository.Save(room, null, range, null);
         }
-
 
         // Aという会議室を予約するものは何やねん？？？
         // →　なにをアサーションすることは何だろう？
@@ -67,5 +80,22 @@ namespace Test
         // なんにも確認しないテスト。とは→　とにかくエラーが起きないこと。
         // なにも起きなかった。例外が起きなかったこと。
         // 
+
+
+        [Fact]
+        public void Aという会議室を予約可能か聞いたら_既に予約されていたのでNGだった() {
+            
+            // Prepare
+            I予約希望Repository repository = new 予約希望Repository();
+            var room = new MeetingRoom(MeetingRoomName.A);
+            var range = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._13, 予約開始_分._00, new コマ数(8));
+            repository.Save(room, null, range, null);
+
+            // Execute
+            var 予約したい期間 = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._12, 予約開始_分._00, new コマ数(8));
+            var 予約できるかどうか = repository.この会議室が予約可能かどうか教えて(room, null, 予約したい期間, null);
+
+            Assert.False(予約できるかどうか);
+        }
     }
 }

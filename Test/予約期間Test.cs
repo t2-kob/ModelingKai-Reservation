@@ -23,7 +23,7 @@ namespace Test
             {
                 var me = new 予約期間(new 予約年月日(2020, 2, 23), 予約開始_時._13, 予約開始_分._00, new コマ数(8));
                 var 被っている = me.時間かぶってますか(_target);
-                Assert.True(被っている);
+                Assert.True(false);
             }
 
             /// <summary>

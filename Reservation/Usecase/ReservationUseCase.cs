@@ -6,12 +6,15 @@ using Reservation.Domain;
 namespace Reservation.Usecase {
     class ReservationUseCase {
         public bool Reserve(int year, int コマ数) {
-            
-            var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
-                                    new ReserverId(),
-                                    new 予約期間(null, 予約開始_時._10, 予約開始_分._00, null),
-                                    new 想定使用人数());
-            var 予約結果 = 予約希望.申請(); 
+
+            // TODO:ここのユースケースを書く&テストを書く
+
+
+            // var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
+            //                         new ReserverId(),
+            //                         new 予約期間(null, 予約開始_時._10, 予約開始_分._00, null),
+            //                         new 想定使用人数());
+            // var 予約結果 = 予約希望.申請(); 
 
             //TODO: 返すのはプリミティブ？予約結果？　とりあえず一旦プリミティブで。
             return false;

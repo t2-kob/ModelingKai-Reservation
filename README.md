@@ -1,6 +1,7 @@
 # ModelingKai-Reservation
 2019/12/21 実施のモデリング会でのモブプロ結果
 
+[![CircleCI](https://circleci.com/gh/t2-kob/ModelingKai-Reservation/tree/master.svg?style=svg)](https://circleci.com/gh/t2-kob/ModelingKai-Reservation/tree/master)
 
 
 ユースケース図

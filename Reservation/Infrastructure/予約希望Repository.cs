@@ -11,6 +11,11 @@ namespace Reservation.Infrastructure
     /// </summary>
     public class 予約希望Repository : I予約希望Repository
     {
+        // 予約済みはDomainの持ち物。全部リポジトリの中身をとってきて、
+        // かぶってるかを確認する振る舞いをどこかに持たせる(ファーストクラスコレクション？)
+        //   ==> Repository から、スマートなふるまい(かぶってる？) を排除する。
+
+
         // memo:InMemoryとして持ちたかった為に、クラスを定義した
         private List<予約済み> list = new List<予約済み>();
         

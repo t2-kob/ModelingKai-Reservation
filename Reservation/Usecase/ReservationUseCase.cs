@@ -2,21 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 using Reservation.Domain;
+using Reservation.Domain.Reservations;
+using Reservation.Domain.Reservations.MeetingRooms;
+using Reservation.Domain.Reservations.Period;
+using Reservation.Infrastructure;
 
 namespace Reservation.Usecase {
-    class ReservationUseCase {
-        public bool Reserve(int year, int コマ数) {
+    public class ReservationUseCase {
 
-            // TODO:ここのユースケースを書く&テストを書く
+        private readonly I予約希望Repository repository;
+
+        public ReservationUseCase(I予約希望Repository repository) {
+            this.repository = repository;
+        }
 
 
-            // var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
-            //                         new ReserverId(),
-            //                         new 予約期間(null, 予約開始_時._10, 予約開始_分._00, null),
-            //                         new 想定使用人数());
-            // var 予約結果 = 予約希望.申請(); 
+        //TODO: 返すのはプリミティブ？予約結果？　とりあえず一旦プリミティブで。
+        public bool 予約する(MeetingRoom room, ReserverId reserverId, 予約期間 予約期間, 想定使用人数 想定使用人数) {
 
-            //TODO: 返すのはプリミティブ？予約結果？　とりあえず一旦プリミティブで。
+            //TODO: 予約希望つかってない
+            var 予約希望 = new 予約希望(room, 予約期間);
+
+            var 予約可能ですか = repository.この会議室は予約可能ですか(room, reserverId, 予約期間, 想定使用人数);
+            if (予約可能ですか) {
+                repository.Save(room, reserverId, 予約期間, 想定使用人数);
+                return true;
+            }
+
             return false;
         }
 

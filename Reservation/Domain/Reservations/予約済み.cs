@@ -9,18 +9,22 @@ namespace Reservation.Domain.Reservations
         // これ、DTOっぽい。
         // Repository的な責務っぽい
         private readonly MeetingRoom room;
+        private readonly ReserverId reserverId;
         private readonly 予約期間 range;
+        private readonly 想定使用人数 想定使用人数;
 
-        public 予約済み(MeetingRoom room, 予約期間 range)
+        public 予約済み(MeetingRoom room, ReserverId reserverId, 予約期間 range, 想定使用人数 想定使用人数)
         {
             this.room = room;
+            this.reserverId = reserverId;
             this.range = range;
+            this.想定使用人数 = 想定使用人数;
         }
 
 
         public bool かぶってますか(予約希望 other) {
-            var 会議室いっしょ = room.Equals(other.room);
-            var 予約期間かぶり = range.かぶってますか(other.range);
+            var 会議室いっしょ = room.Equals(other.Room);
+            var 予約期間かぶり = range.かぶってますか(other.Range);
 
             return 会議室いっしょ && 予約期間かぶり;
         }

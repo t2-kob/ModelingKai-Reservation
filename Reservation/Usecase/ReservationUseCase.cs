@@ -21,11 +21,16 @@ namespace Reservation.Usecase {
         public bool 予約する(MeetingRoom room, ReserverId reserverId, 予約期間 予約期間, 想定使用人数 想定使用人数) {
 
             //TODO: 予約希望つかってない
-            var 予約希望 = new 予約希望(room, 予約期間);
+            var 予約希望 = new 予約希望(room, reserverId, 予約期間, 想定使用人数);
 
-            var 予約可能ですか = repository.この会議室は予約可能ですか(room, reserverId, 予約期間, 想定使用人数);
+            // TODO: 先に予約希望Repos を修正してから考える。
+            //予約希望.予約する();
+            //new 予約(予約希望).予約する();
+
+
+            var 予約可能ですか = repository.この会議室は予約可能ですか(予約希望);
             if (予約可能ですか) {
-                repository.Save(room, reserverId, 予約期間, 想定使用人数);
+                repository.Save(予約希望);
                 return true;
             }
 

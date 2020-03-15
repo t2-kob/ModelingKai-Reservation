@@ -5,18 +5,12 @@ namespace Reservation.Domain.Reservations
 {
     public interface I予約希望Repository
     {
-        void Save(MeetingRoom room,
-                    ReserverId id,
-                    予約期間 range,
-                    想定使用人数 ninzu);
+        void Save(予約希望 予約希望);
         // TODO:エンティティは知ってていいか？
         // TODO:値オブジェクトならワンチャン
         
         // masuda派はFind派
-        bool この会議室は予約可能ですか(MeetingRoom room,
-                        ReserverId id,
-                        予約期間 range,
-                        想定使用人数 ninzu);
+        bool この会議室は予約可能ですか(予約希望 予約希望);
         // リポジトリは、ドメインがやりたいことを実現する？
         // やりたいことをセーブ？　
     }

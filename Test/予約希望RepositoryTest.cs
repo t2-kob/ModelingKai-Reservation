@@ -30,7 +30,8 @@ namespace Test
 
             // TODO:trueを返すのはちょっと変
             var 予約したい期間 = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._12, 予約開始_分._00, new コマ数(8));
-            Assert.True(repository.この会議室は予約可能ですか(new MeetingRoom(MeetingRoomName.A), null, 予約したい期間, null));
+            var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A), null, 予約したい期間, null);
+            Assert.True(repository.この会議室は予約可能ですか(予約希望));
         }
 
         // TODO: Saveメソッドが実装できたら、ここのテストをやります。
@@ -56,7 +57,8 @@ namespace Test
 
             var ex = Assert.Throws<ArgumentException>(() => {
                 var range = new 予約期間(new 予約年月日(2020,2,10), 予約開始_時._18, 予約開始_分._15, new コマ数(4));
-                repository.Save(room, null, range, null);
+                var 予約希望 = new 予約希望(room, null, range, null);
+                repository.Save(予約希望);
             });
         }
 
@@ -68,8 +70,8 @@ namespace Test
 
             var room = new MeetingRoom(MeetingRoomName.A);
             var range = new 予約期間(new 予約年月日(2020,2,10), 予約開始_時._18, 予約開始_分._15, new コマ数(3));
-            
-            repository.Save(room, null, range, null);
+            var 予約希望 = new 予約希望(room, null, range, null);
+            repository.Save(予約希望);
         }
 
         // Aという会議室を予約するものは何やねん？？？
@@ -93,11 +95,12 @@ namespace Test
             I予約希望Repository repository = new 予約希望Repository();
             var room = new MeetingRoom(MeetingRoomName.A);
             var range = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._13, 予約開始_分._00, new コマ数(8));
-            repository.Save(room, null, range, null);
+            var 予約希望 = new 予約希望(room, null, range, null);
+            repository.Save(予約希望);
 
             // Execute
             var 予約したい期間 = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._12, 予約開始_分._00, new コマ数(8));
-            var 予約できるかどうか = repository.この会議室は予約可能ですか(room, null, 予約したい期間, null);
+            var 予約できるかどうか = repository.この会議室は予約可能ですか(予約希望);
 
             Assert.False(予約できるかどうか);
         }

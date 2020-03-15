@@ -1,9 +1,10 @@
-using Reservation.Domain;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Reservation.Domain.Reservations;
+using Reservation.Domain.Reservations.MeetingRooms;
+using Reservation.Domain.Reservations.Period;
 
-namespace Infrastructure
+namespace Reservation.Infrastructure
 {
     /// <summary>
     /// インメモリでのリポジトリ

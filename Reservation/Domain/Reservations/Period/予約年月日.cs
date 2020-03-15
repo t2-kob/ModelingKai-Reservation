@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
-namespace Reservation.Domain {
+namespace Reservation.Domain.Reservations.Period {
     /// <summary>
     /// 年月日だけ持つ
     /// </summary>

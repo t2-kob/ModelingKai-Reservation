@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Reservation.Domain {
+namespace Reservation.Domain.Reservations.Period {
     public class コマ数 {
         // コマ数の制約ってなに？
 

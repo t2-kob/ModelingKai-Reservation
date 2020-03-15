@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 using Reservation.Domain;
-using Infrastructure;
+using Reservation.Domain.Reservations.Period;
 
 namespace Test
 {

@@ -1,7 +1,7 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
+using Reservation.Domain.Reservations.MeetingRooms;
+using Reservation.Domain.Reservations.Period;
 
-namespace Reservation.Domain
+namespace Reservation.Domain.Reservations
 {
     public class 予約希望
     {

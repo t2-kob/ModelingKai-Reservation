@@ -20,30 +20,18 @@ namespace Reservation.Usecase {
         //TODO: 返すのはプリミティブ？予約結果？　とりあえず一旦プリミティブで。
         public bool 予約する(MeetingRoom room, ReserverId reserverId, 予約期間 予約期間, 想定使用人数 想定使用人数) {
 
-            //TODO: 予約希望つかってない
+            //TODO: これはここで作るべき情報？
             var 予約希望 = new 予約希望(room, reserverId, 予約期間, 想定使用人数);
 
-            // TODO: 先に予約希望Repos を修正してから考える。
-            //予約希望.予約する();
-            //new 予約(予約希望).予約する();
 
-            予約済みs ある期間のよやくの一覧 = repository.この期間のよやくください();
-            var 予約できますか = 予約確認サービス.予約できますか(予約希望, 予約済みs);
+            予約済み群 予約希望日の予約の一覧 = repository.この日の予約一覧をください(予約希望.予約年月日);
 
-            予約済みs.予約できる？(予約希望);
-            予約済みs.うまってますか？(予約希望);
-            予約済みs.かぶってますか？(予約希望);
-            予約済みs.空いている？(予約希望);
-            予約済みs.Exists(予約希望);
-
-
-            var 予約可能ですか = repository.この会議室は予約可能ですか(予約希望);
-            if (予約可能ですか) {
-                repository.Save(予約希望);
-                return true;
+            if (予約希望日の予約の一覧.かぶってますか(予約希望)) {
+                return false;
             }
 
-            return false;
+            repository.Save(予約希望);
+            return true;
         }
 
         //public 予約結果 Reserve2(int year, int コマ数) { 

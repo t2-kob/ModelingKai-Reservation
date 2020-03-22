@@ -20,8 +20,10 @@ namespace Reservation.Domain.Reservations
 
         public MeetingRoom Room => room;
         public 予約期間 Range => range;
+        public 予約年月日 予約年月日 => Range.ReservationDate;
 
         public ReserverId ReserverId => reserverId;
         public 想定使用人数 想定使用人数_ => this.想定使用人数;
+
     }
 }

@@ -6,8 +6,7 @@ namespace Reservation.Domain.Reservations
     public class 予約済み
     {
         // todo: この名前ヤバい
-        // これ、DTOっぽい。
-        // Repository的な責務っぽい
+        // これ、DTOっぽい。Repository的な責務っぽい
         private readonly MeetingRoom room;
         private readonly ReserverId reserverId;
         private readonly 予約期間 range;
@@ -19,6 +18,12 @@ namespace Reservation.Domain.Reservations
             this.reserverId = reserverId;
             this.range = range;
             this.想定使用人数 = 想定使用人数;
+        }
+
+        public bool この日の予約ですか(予約年月日 予約年月日) {
+            // TODO: .で繋げすぎ感
+            var 同じ日ですか = range.ReservationDate.Equals(予約年月日);
+            return 同じ日ですか;
         }
 
 

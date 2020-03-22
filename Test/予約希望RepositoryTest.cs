@@ -18,21 +18,6 @@ namespace Test
             Assert.NotNull(repository);
         }
 
-        [Fact]
-        public void 利用したい会議室が_先約がなければ_予約可能状態であることが分かる()
-        {
-            // ・予約可能かどうかが判定できる
-            // 　・先約がなけれれば、予約可能ってわかる
-            // 　・先約があるとkは、予約できないよ
-            // 　・(他にも予約できない場合はあるかもしれないが、それはドメインエキスパートに聞こう！ 例えば、雨漏りがあって会議室が予約も使用もできないとか)
-
-            I予約希望Repository repository = new 予約希望Repository();
-
-            // TODO:trueを返すのはちょっと変
-            var 予約したい期間 = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._12, 予約開始_分._00, new コマ数(8));
-            var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A), null, 予約したい期間, null);
-            Assert.True(repository.この会議室は予約可能ですか(予約希望));
-        }
 
         // TODO: Saveメソッドが実装できたら、ここのテストをやります。
         // [Fact]
@@ -88,21 +73,6 @@ namespace Test
         // 
 
 
-        [Fact]
-        public void Aという会議室を予約可能か聞いたら_既に予約されていたのでNGだった() {
-            
-            // Prepare
-            I予約希望Repository repository = new 予約希望Repository();
-            var room = new MeetingRoom(MeetingRoomName.A);
-            var range = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._13, 予約開始_分._00, new コマ数(8));
-            var 予約希望 = new 予約希望(room, null, range, null);
-            repository.Save(予約希望);
 
-            // Execute
-            var 予約したい期間 = new 予約期間(new 予約年月日(2020, 2, 10), 予約開始_時._12, 予約開始_分._00, new コマ数(8));
-            var 予約できるかどうか = repository.この会議室は予約可能ですか(予約希望);
-
-            Assert.False(予約できるかどうか);
-        }
     }
 }

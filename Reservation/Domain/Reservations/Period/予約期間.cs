@@ -2,7 +2,7 @@ using System;
 
 namespace Reservation.Domain.Reservations.Period {
     public class 予約期間 {
-        private readonly 予約年月日 ReservationDate; // e.g. 2020年1月2日
+        public readonly 予約年月日 ReservationDate; // e.g. 2020年1月2日
         private readonly 予約開始_時 予約開始_時; // e.g. 13(時)
         private readonly 予約開始_分 予約開始_分; // e.g. 15(分)
         private readonly コマ数 koma; // e.g. 12コマ

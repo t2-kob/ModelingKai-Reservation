@@ -18,17 +18,7 @@ namespace Reservation.Usecase {
 
 
         //TODO: 返すのはプリミティブ？予約結果？　とりあえず一旦プリミティブで。
-        public bool 予約する(MeetingRoom room, ReserverId reserverId, 予約期間 予約期間, 想定使用人数 想定使用人数) {
-        //public bool 予約する(予約希望 予約希望)
-        //public bool 予約する(string roomName, int reserverId, .....)
-
-                    //TODO: これはここで作るべき情報？
-                    //・場所・名前の問題: 『希望』を予約する() の中で作るの？
-                    //・コンストラクタの問題: どこまでチェックされているのか想像しにくい
-                    var 予約希望 = new 予約希望(room, reserverId, 予約期間, 想定使用人数);
-
-            //var 予約希望 = 予約希望.Create(room, reserverId, 予約期間, 想定使用人数);
-
+        public bool 予約する(予約希望 予約希望) {
 
             予約済み群 予約希望日の予約の一覧 = repository.この日の予約一覧をください(予約希望.予約年月日);
 

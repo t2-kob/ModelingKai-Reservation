@@ -77,6 +77,13 @@ namespace Reservation.Domain.Reservations.Period {
             return 時間かぶってますか(other);
         }
 
+
+        public bool 同じ日ですか(予約年月日 予約年月日) {
+            return ReservationDate.Equals(予約年月日);
+        }
+
+
+
         //todo: ビジネスルール：30日以内までしか予約できない
 
         // TODO:開始時刻とコマ数の組み合わせで、ちゃんと10:00-19:00の範囲で収まるかどうかを調べたい

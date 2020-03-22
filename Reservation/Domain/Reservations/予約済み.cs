@@ -21,9 +21,7 @@ namespace Reservation.Domain.Reservations
         }
 
         public bool この日の予約ですか(予約年月日 予約年月日) {
-            // TODO: .で繋げすぎ感
-            var 同じ日ですか = range.ReservationDate.Equals(予約年月日);
-            return 同じ日ですか;
+            return range.同じ日ですか(予約年月日);
         }
 
 

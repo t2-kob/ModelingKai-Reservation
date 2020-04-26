@@ -11,6 +11,7 @@ namespace Reservation.Domain.Reservations.Period
         _16 = 16,
         _17 = 17,
         _18 = 18,
+        _19 = 19, //TODO: 開始時なのに19とな！？
     }
 
 

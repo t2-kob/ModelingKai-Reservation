@@ -17,7 +17,8 @@ namespace Test
         public void Aという会議室を予約する() {
             var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
                                         new ReserverId(),
-                                        new 予約期間(new 予約年月日(2020, 3, 15), 予約開始_時._14, 予約開始_分._15, new コマ数(8)),
+                                        new 予約期間(new 日時(new 予約年月日(2020, 3, 15), 予約開始_時._14, 予約開始_分._15),
+                                                     new 日時(new 予約年月日(2020, 3, 15), 予約開始_時._16, 予約開始_分._15)),
                                         new 想定使用人数());
 
             var useCase = new ReservationUseCase(new 予約希望Repository());
@@ -30,7 +31,8 @@ namespace Test
         {
             var 予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
                                         new ReserverId(),
-                                        new 予約期間(new 予約年月日(2020, 3, 15), 予約開始_時._14, 予約開始_分._15, new コマ数(8)),
+                                        new 予約期間(new 日時(new 予約年月日(2020, 3, 15), 予約開始_時._14, 予約開始_分._15),
+                                                     new 日時(new 予約年月日(2020, 3, 15), 予約開始_時._16, 予約開始_分._15)),
                                         new 想定使用人数());
 
             var useCase = new ReservationUseCase(new 予約希望Repository());
@@ -43,7 +45,8 @@ namespace Test
 
             var _2回目の予約希望 = new 予約希望(new MeetingRoom(MeetingRoomName.A),
                                                 new ReserverId(),
-                                                new 予約期間(new 予約年月日(2020, 3, 15), 予約開始_時._14, 予約開始_分._15, new コマ数(8)),
+                                                 new 予約期間(new 日時(new 予約年月日(2020, 3, 15), 予約開始_時._14, 予約開始_分._15),
+                                                              new 日時(new 予約年月日(2020, 3, 15), 予約開始_時._16, 予約開始_分._15)),
                                                 new 想定使用人数());
 
             var _2回目も予約できた = useCase.予約する(_2回目の予約希望);

@@ -6,22 +6,20 @@ namespace Reservation.Domain.Reservations.Period {
     /// 年月日だけ持つ
     /// </summary>
     public class 予約年月日 : IEquatable<予約年月日> {
-        private readonly int year;
-        private readonly int month;
-        private readonly int day;
+
+        public int Year { get; }
+        public int Month { get; }
+        public int Day { get; }
+
 
         public 予約年月日(int year, int month, int day) 
         {
-            this.year = year;
-            this.month = month;
-            this.day = day;
+            this.Year = year;
+            this.Month = month;
+            this.Day = day;
         }
 
-        public string AsString()
-        {
-            // 値オブジェクトの特別感を出すために
-            return $"{year}年{month}月{day}日";
-        }
+
 
         public bool Equals([AllowNull] 予約年月日 other)
         {
@@ -30,9 +28,9 @@ namespace Reservation.Domain.Reservations.Period {
                 return false;
             }
 
-            return year == other.year &&
-                   month == other.month &&
-                   day == other.day;
+            return Year == other.Year &&
+                   Month == other.Month &&
+                   Day == other.Day;
         }
     }
 }

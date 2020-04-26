@@ -26,6 +26,7 @@ namespace Reservation.Domain.Reservations
 
 
         public bool かぶってますか(予約希望 other) {
+
             var 会議室いっしょ = room.Equals(other.Room);
             var 予約期間かぶり = range.かぶってますか(other.Range);
 

@@ -13,14 +13,14 @@ namespace Reservation.Presentation
 
         public void 予約()
         {
-            //TODO: Presentation層の実装。
+            //TODO: Presentation層の実装。            //var 希望 = new 予約希望(new MeetingRoom(roomName),
+            //                        new ReserverId(reserverId),
+            //                        new 予約期間(new 予約年月日(start.Year, start.Month, ....), ...)
+            //                        new 想定使用人数());
 
-            var 希望 = new 予約希望(new MeetingRoom(roomName),
-                                    new ReserverId(reserverId),
-                                    new 予約期間(new 予約年月日(start.Year, start.Month, ....), ...)
-                                    new 想定使用人数());
+            //new ReservationUseCase().予約する(希望);
 
-            new ReservationUseCase().予約する(希望);
+
         }
 
     }

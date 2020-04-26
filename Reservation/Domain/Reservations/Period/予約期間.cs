@@ -2,66 +2,110 @@ using System;
 
 namespace Reservation.Domain.Reservations.Period {
     public class 予約期間 {
-        public readonly 予約年月日 ReservationDate; // e.g. 2020年1月2日
-        private readonly 予約開始_時 予約開始_時; // e.g. 13(時)
-        private readonly 予約開始_分 予約開始_分; // e.g. 15(分)
-        private readonly コマ数 koma; // e.g. 12コマ
 
-        public 予約期間(予約年月日 ReservationDate, 予約開始_時 予約開始_時, 予約開始_分 予約開始_分, コマ数 予約コマ数)
-        {
-            //todo: ビジネスルール：10:00-19:00までしか予約が出来ない
-            // 予約開始時刻とコマ数を見て、10:00-19:00までしか予約できないことを確認する
-            var 残コマ数 = コマ数.残コマ数を教えて(予約開始_時,予約開始_分);
-            if (! (残コマ数 >= 予約コマ数) )
-                throw new ArgumentException($"{残コマ数}を超えることはできません");
+        //TODO: ルール: 日をまたいではいけない　とかあるよ。
 
-            //todo:
-            // 1. このメソッドの中で、予約開始時刻のDateTimeとコマ数のDateTimeを貰って、
-            // 計算をして、10:00-19:00以内だよね？ということを確認する
-            // ↑DateTimeをおもらしするのは止めたほうが良さそう。
-            //
-            //   1-1: Range が終了時刻を判断する (from 予約開始時刻、コマ数)
 
-            // 予約開始_時と予約開始_分を渡して、残コマ数が取れる。それを比較する。
+        private readonly 日時 _開始日時;
+        private readonly 日時 _終了日時;
 
-            // 2. ↑の計算を予約開始時刻クラスか、コマ数クラスの中に委譲する？
-            //   2-1: 予約開始時刻が最大コマ数とかをくれる？
+        public 予約年月日 予約年月日 => _開始日時.年月日;
 
-            // 3. ↑もしかしたら、それ専用のクラスを作るか？
 
-            // 最終手段. コマ数をやめて、予約終了時刻を作るか？
+        public 予約期間(日時 開始日時, 日時 終了日時) {
+            _開始日時 = 開始日時;
+            _終了日時 = 終了日時;
 
-            this.ReservationDate = ReservationDate;
-            this.予約開始_時 = 予約開始_時;
-            this.予約開始_分 = 予約開始_分;
-            this.koma = 予約コマ数;
+            if(_終了日時.時間が予約範囲外である())
+            {
+                throw new ArgumentException($"予約可能な時刻ではありません。");
+            }
         }
 
 
-        private DateTime 開始時刻は何時ですか()
-        {
-            // TODO: 1900年直指定ってどうよ？
-            var result = new DateTime(1900, 1, 1, (int)予約開始_時, (int)予約開始_分, 0);
-            return result;
 
-        }
-        private DateTime 終了時刻は何時ですか() {
-            var 開始時刻 = 開始時刻は何時ですか();
-            var 終了時刻 = 開始時刻.AddMinutes(koma.分換算());
-            return 終了時刻;
-        }
+        //public readonly 予約年月日 ReservationDate; // e.g. 2020年1月2日
+        //private readonly 予約開始_時 予約開始_時; // e.g. 13(時)
+        //private readonly 予約開始_分 予約開始_分; // e.g. 15(分)
+        //private readonly コマ数 koma; // e.g. 12コマ
+
+        //public 予約期間(予約年月日 ReservationDate, 予約開始_時 予約開始_時, 予約開始_分 予約開始_分, コマ数 予約コマ数)
+        //{
+        //    //todo: ビジネスルール：10:00-19:00までしか予約が出来ない
+        //    // 予約開始時刻とコマ数を見て、10:00-19:00までしか予約できないことを確認する
+        //    var 残コマ数 = コマ数.残コマ数を教えて(予約開始_時,予約開始_分);
+        //    if (! (残コマ数 >= 予約コマ数) )
+        //        throw new ArgumentException($"{残コマ数}を超えることはできません");
+
+        //    //todo:
+        //    // 1. このメソッドの中で、予約開始時刻のDateTimeとコマ数のDateTimeを貰って、
+        //    // 計算をして、10:00-19:00以内だよね？ということを確認する
+        //    // ↑DateTimeをおもらしするのは止めたほうが良さそう。
+        //    //
+        //    //   1-1: Range が終了時刻を判断する (from 予約開始時刻、コマ数)
+
+        //    // 予約開始_時と予約開始_分を渡して、残コマ数が取れる。それを比較する。
+
+        //    // 2. ↑の計算を予約開始時刻クラスか、コマ数クラスの中に委譲する？
+        //    //   2-1: 予約開始時刻が最大コマ数とかをくれる？
+
+        //    // 3. ↑もしかしたら、それ専用のクラスを作るか？
+
+        //    // 最終手段. コマ数をやめて、予約終了時刻を作るか？
+
+        //    this.ReservationDate = ReservationDate;
+        //    this.予約開始_時 = 予約開始_時;
+        //    this.予約開始_分 = 予約開始_分;
+        //    this.koma = 予約コマ数;
+        //}
+
+
+        //private DateTime 開始時刻は何時ですか()
+        //{
+        //    // TODO: 1900年直指定ってどうよ？
+        //    var result = new DateTime(1900, 1, 1, (int)予約開始_時, (int)予約開始_分, 0);
+        //    return result;
+        //}
+        //private DateTime 終了時刻は何時ですか()
+        //{
+        //    var 開始時刻 = 開始時刻は何時ですか();
+        //    var 終了時刻 = 開始時刻.AddMinutes(koma.分換算());
+        //    return 終了時刻;
+        //}
+
+
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="other"></param>
         /// <returns>true:被っている false:被っていない</returns>
-        public bool 時間かぶってますか(予約期間 other) {
+        public bool 時間かぶってますか(予約期間 other)
+        {
+
+
+            //private readonly 日時 _開始日時;
+            //private readonly 日時 _終了日時;
+
+            //TODO: 日付も比較されちゃうけど・・・
+            //TODO: 時間が「かぶってる」ことよりも「かぶってない」ことを判定した方が簡単かもしれないですね。other.end < self.start(＝がいるかどうかはわからない。。。）
+            bool 時間かぶってますか = (_開始日時.AsDateTime() >= other._開始日時.AsDateTime()
+                                    && _開始日時.AsDateTime() < other._終了日時.AsDateTime()) ||
+                                      (_開始日時.AsDateTime() <= other._開始日時.AsDateTime()
+                                    && _終了日時.AsDateTime() > other._開始日時.AsDateTime());
+
+
+
+
+            //_開始日時.AsDateTime() <= other._開始日時.AsDateTime()
+            //                       && other._終了日時.AsDateTime() <=_終了日時.AsDateTime();
+
+
             //開始時間とコマ数
-            bool 時間かぶってますか = (開始時刻は何時ですか() >= other.開始時刻は何時ですか() 
-                                && 開始時刻は何時ですか() < other.終了時刻は何時ですか()) ||
-                             (開始時刻は何時ですか() <= other.開始時刻は何時ですか()
-                                && 終了時刻は何時ですか() > other.開始時刻は何時ですか());
+            //bool 時間かぶってますか = (開始時刻は何時ですか() >= other.開始時刻は何時ですか()
+            //                    && 開始時刻は何時ですか() < other.終了時刻は何時ですか()) ||
+            //                 (開始時刻は何時ですか() <= other.開始時刻は何時ですか()
+            //                    && 終了時刻は何時ですか() > other.開始時刻は何時ですか());
 
             return 時間かぶってますか;
         }
@@ -69,18 +113,18 @@ namespace Reservation.Domain.Reservations.Period {
 
         internal bool かぶってますか(予約期間 other)
         {
-            // 年月日ちがったらダメー
-            if (!ReservationDate.Equals(other.ReservationDate)) {
-                return false;
-            }
-
             return 時間かぶってますか(other);
         }
 
+        //TODO: 日をまたいじゃダメにする。
 
-        public bool 同じ日ですか(予約年月日 予約年月日) {
-            return ReservationDate.Equals(予約年月日);
+        public bool 同じ日ですか(予約年月日 予約年月日)
+        {
+            return _開始日時.同じ日ですか(予約年月日)
+                || _終了日時.同じ日ですか(予約年月日);
         }
+
+        
 
 
 

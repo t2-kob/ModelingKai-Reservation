@@ -14,8 +14,16 @@ namespace Reservation.Domain.Reservations.Period {
 
 
         public 予約期間(予約開始日時 開始日時, 予約終了日時 終了日時) {
+            if(!開始日時.同じ日ですか(終了日時.年月日))
+                throw new ArgumentOutOfRangeException();
+
+            if(終了日時.AsDateTime() <= 開始日時.AsDateTime())
+                throw new ArgumentOutOfRangeException();            
+
             _開始日時 = 開始日時;
             _終了日時 = 終了日時;
+
+            
         }
 
         //TODO: 開始 >= 終了 がダメっていうルールがないぞ。当然未テスト。

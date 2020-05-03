@@ -168,6 +168,33 @@ namespace Test
                 var 被っている = me.時間かぶってますか(_target);
                 Assert.False (被っている);
             }
+            [Fact]
+            public void 開始日時と終了日時が一緒のものは作れないよ()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                {
+                    var me = new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 23), 予約開始_時._16, 予約_分._00),
+                                        new 予約終了日時(new 予約年月日(2020, 2, 23), 予約終了_時._16, 予約_分._00));
+                });
+            }
+            [Fact]
+            public void 開始日時と終了日時が違う日付だったらエラーになること()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                {
+                    var me = new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 22), 予約開始_時._16, 予約_分._00),
+                                        new 予約終了日時(new 予約年月日(2020, 2, 23), 予約終了_時._16, 予約_分._00));
+                });
+            }
+            [Fact]
+            public void 終了日時より開始日時が未来であること()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                {
+                    var me = new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 23), 予約開始_時._18, 予約_分._00),
+                                        new 予約終了日時(new 予約年月日(2020, 2, 23), 予約終了_時._11, 予約_分._00));
+                });
+            }
         }
     }
 }

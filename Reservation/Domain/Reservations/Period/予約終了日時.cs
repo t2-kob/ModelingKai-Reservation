@@ -18,15 +18,24 @@ namespace Reservation.Domain.Reservations.Period
         // 
 
 
+        //TODO: 19:00～のテストがない
+
         public 予約終了日時(予約年月日 年月日, 予約終了_時 時, 予約_分 分) {
             this.年月日 = 年月日;
             this.時 = 時;
             this.分 = 分;
+
+            if (時間が予約範囲外である()) {
+                throw new ArgumentOutOfRangeException($"Over: {時}, {分}"); // TODO: 良い感じにしてね。
+            }
         }
 
         internal bool 時間が予約範囲外である()
         {
-            return (int)時 < 10 || ((int)時 == 19 && (int)分 > 0) || ((int)時 >= 20);
+            var 開始側が範囲外 = (int)時 == 10 && (int)分 == 0;
+            var 終了側が範囲外 = (int)時 == 19 && (int)分 > 0;
+
+            return 開始側が範囲外 || 終了側が範囲外;
         }
 
 

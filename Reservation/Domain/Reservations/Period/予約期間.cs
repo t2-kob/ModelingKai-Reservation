@@ -17,10 +17,10 @@ namespace Reservation.Domain.Reservations.Period {
             _開始日時 = 開始日時;
             _終了日時 = 終了日時;
 
-            if(_終了日時.時間が予約範囲外である())
-            {
-                throw new ArgumentException($"予約可能な時刻ではありません。");
-            }
+            //if(_終了日時.時間が予約範囲外である())
+            //{
+            //    throw new ArgumentException($"予約可能な時刻ではありません。");
+            //}
         }
 
 

@@ -38,7 +38,7 @@ namespace Test
 
             var room = new MeetingRoom (MeetingRoomName.A);
 
-            var ex = Assert.Throws<ArgumentException> (() =>
+            var ex = Assert.Throws<ArgumentOutOfRangeException> (() =>
             {
                 var range = new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 10), 予約開始_時._18, 予約_分._15),
                                         new 予約終了日時(new 予約年月日(2020, 2, 10), 予約終了_時._19, 予約_分._15)); // TODO： 予約終了時を作ったりするところからやる。コミットログ参照

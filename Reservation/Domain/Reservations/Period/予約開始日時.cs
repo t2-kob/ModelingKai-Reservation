@@ -24,11 +24,6 @@ namespace Reservation.Domain.Reservations.Period
             this.分 = 分;
         }
 
-        internal bool 時間が予約範囲外である()
-        {
-            return (int)時 < 10 || ((int)時 == 19 && (int)分 > 0) || ((int)時 >= 20);
-        }
-
 
 
 

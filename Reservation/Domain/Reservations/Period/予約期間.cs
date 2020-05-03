@@ -16,13 +16,9 @@ namespace Reservation.Domain.Reservations.Period {
         public 予約期間(予約開始日時 開始日時, 予約終了日時 終了日時) {
             _開始日時 = 開始日時;
             _終了日時 = 終了日時;
-
-            //if(_終了日時.時間が予約範囲外である())
-            //{
-            //    throw new ArgumentException($"予約可能な時刻ではありません。");
-            //}
         }
 
+        //TODO: 開始 >= 終了 がダメっていうルールがないぞ。当然未テスト。
 
 
 

@@ -1,7 +1,7 @@
-﻿using Reservation.Infrastructure;
-using Reservation.Usecase;
-using System;
-using System.Diagnostics;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Cli.Applications;
+using Reservation.Domain.Reservations;
+using Reservation.Infrastructure;
 
 namespace Cli
 {
@@ -9,15 +9,25 @@ namespace Cli
     {
         static void Main(string[] args)
         {
-            // TODO: Infrastracture 層見えちゃってるけど、また考える。
-            //       ==> DI する？ するとしたら何でやる？
-            //              ==> ASP.Net 純正のDIのやつ、SimpleInjection、とかとか。
-            //
-            // TODO: ConsoleApp 系のフレームワーク使う？
-            var usecase = new ReservationUseCase(new 予約希望Repository());
+            InitializeApplication().Run();
+        }
 
-            Console.WriteLine("Hello World!");
-            Debug.WriteLine("Hello World!");
+        private static IApplication InitializeApplication()
+        {
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+
+            return serviceCollection.BuildServiceProvider()
+                .GetService<IApplication>();
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            // InfrastructureのDI設定
+            services.AddTransient<I予約希望Repository, 予約希望Repository>();
+
+            // ApplicationのDI設定
+            services.AddTransient<IApplication, Application>();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Cli
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            // InfrastructureのDI設定
+            // RepositoryのDI設定
             services.AddTransient<I予約希望Repository, 予約希望Repository>();
 
             // ApplicationのDI設定

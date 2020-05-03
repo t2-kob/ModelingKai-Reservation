@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservation", "Reservation\Reservation.csproj", "{35CD0DED-79B2-4A6F-9F68-FF52D7F05019}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reservation", "Reservation\Reservation.csproj", "{35CD0DED-79B2-4A6F-9F68-FF52D7F05019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{342FB811-EFBA-478A-84F0-6DADF457C91C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{342FB811-EFBA-478A-84F0-6DADF457C91C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentations", "{A50C4E5A-78FE-4B74-B376-AEDB201CC459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "Presentations\Cli\Cli\Cli.csproj", "{54DF5F46-4520-4751-8497-250E0B524C4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{342FB811-EFBA-478A-84F0-6DADF457C91C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{342FB811-EFBA-478A-84F0-6DADF457C91C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{342FB811-EFBA-478A-84F0-6DADF457C91C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54DF5F46-4520-4751-8497-250E0B524C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54DF5F46-4520-4751-8497-250E0B524C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54DF5F46-4520-4751-8497-250E0B524C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54DF5F46-4520-4751-8497-250E0B524C4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{54DF5F46-4520-4751-8497-250E0B524C4D} = {A50C4E5A-78FE-4B74-B376-AEDB201CC459}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05CFEB13-3231-4FC0-ADE9-2C36A5D7DAC9}

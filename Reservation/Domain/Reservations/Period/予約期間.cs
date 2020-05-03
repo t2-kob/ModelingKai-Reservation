@@ -7,13 +7,13 @@ namespace Reservation.Domain.Reservations.Period {
         //TODO: 開始終了がひっくり返ってるとかはチェックできてない。
 
 
-        private readonly 日時 _開始日時;
-        private readonly 日時 _終了日時;
+        private readonly 予約開始日時 _開始日時;
+        private readonly 予約終了日時 _終了日時;
 
         public 予約年月日 予約年月日 => _開始日時.年月日;
 
 
-        public 予約期間(日時 開始日時, 日時 終了日時) {
+        public 予約期間(予約開始日時 開始日時, 予約終了日時 終了日時) {
             _開始日時 = 開始日時;
             _終了日時 = 終了日時;
 

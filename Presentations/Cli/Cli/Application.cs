@@ -6,7 +6,7 @@ using Reservation.Usecase;
 
 namespace Cli
 {
-    public class Application : IApplication
+    public class Application : BaseApplication
     {
         private readonly I予約希望Repository _repository;
 
@@ -18,11 +18,10 @@ namespace Cli
         /// <summary>
         /// メイン処理
         /// </summary>
-        public void Run()
+        protected override void Main()
         {
             var usecase = new ReservationUseCase(_repository);
 
-            Console.WriteLine("Hello World!");
             Debug.WriteLine("Hello World!");
         }
     }

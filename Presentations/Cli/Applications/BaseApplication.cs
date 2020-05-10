@@ -8,13 +8,13 @@ namespace Cli.Applications
         /// <summary>
         /// エントリポイント
         /// </summary>
-        public void Run()
+        public void Run(string[] args)
         {
             try
             {
                 Before();
 
-                Main();
+                Main(args);
             }
             catch (Exception ex)
             {
@@ -37,7 +37,7 @@ namespace Cli.Applications
         /// <summary>
         /// メイン処理
         /// </summary>
-        protected abstract void Main();
+        protected abstract void Main(string[] args);
 
         /// <summary>
         /// 事後処理

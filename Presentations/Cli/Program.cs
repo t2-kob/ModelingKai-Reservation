@@ -9,7 +9,7 @@ namespace Cli
     {
         static void Main(string[] args)
         {
-            InitializeApplication().Run();
+            InitializeApplication().Run(args);
         }
 
         private static IApplication InitializeApplication()

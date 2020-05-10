@@ -18,6 +18,7 @@ namespace Cli.Applications
             }
             catch (Exception ex)
             {
+                // TODO: システム例外/アプリケーション例外/ドメイン例外をどうする？
                 Debug.WriteLine(ex);
             }
             finally

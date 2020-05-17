@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using Cli.Exceptions;
+using Reservation.Domain.Exceptions;
 
 namespace Cli.Applications
 {
@@ -16,10 +18,18 @@ namespace Cli.Applications
 
                 Main(args);
             }
-            catch (Exception ex)
+            catch (UI入出力がおかしいぞException e)
+            {
+                Debug.WriteLine("UIなんかおかしい", e);
+            }
+            catch (ドメインエラーException e)
+            {
+                Debug.WriteLine("ドメインなんかおかしい", e);
+            }
+            catch (Exception e)
             {
                 // TODO: システム例外/アプリケーション例外/ドメイン例外をどうする？
-                Debug.WriteLine(ex);
+                Debug.WriteLine("予期せぬエラーです", e);
             }
             finally
             {

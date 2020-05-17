@@ -1,3 +1,4 @@
+using Reservation.Domain.Exceptions;
 using System;
 
 namespace Reservation.Domain.Reservations.Period {
@@ -15,10 +16,10 @@ namespace Reservation.Domain.Reservations.Period {
 
         public 予約期間(予約開始日時 開始日時, 予約終了日時 終了日時) {
             if(!開始日時.同じ日ですか(終了日時.年月日))
-                throw new ArgumentOutOfRangeException();
+                throw new ドメインエラーException(new ArgumentOutOfRangeException($"{nameof(同じ日ですか)}"));
 
-            if(終了日時.AsDateTime() <= 開始日時.AsDateTime())
-                throw new ArgumentOutOfRangeException();            
+            if (終了日時.AsDateTime() <= 開始日時.AsDateTime())
+                throw new ドメインエラーException(new ArgumentOutOfRangeException($"開始日時よりも終了日時の方が同じか後です。"));
 
             _開始日時 = 開始日時;
             _終了日時 = 終了日時;

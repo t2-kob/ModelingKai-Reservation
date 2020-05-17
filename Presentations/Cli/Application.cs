@@ -63,6 +63,7 @@ namespace Cli
 
                 予約開始日時 予約開始日時 = 予約時間Parser.予約開始日時をつくる(予約開始DateTime);
                 予約終了日時 予約終了日時 = 予約時間Parser.予約終了日時をつくる(予約終了DateTime);
+
                 var 予約希望 = new 予約希望(meetingRoom,
                     new ReserverId (),
                     new 予約期間(予約開始日時, 予約終了日時),
@@ -72,11 +73,13 @@ namespace Cli
             }
             catch (UI入出力がおかしいぞException e)
             {
-                Console.WriteLine ("なんかおかしい", e);
+                Debug.WriteLine("UIなんかおかしい", e);
+                throw;
             }
             catch (ドメインエラーException e)
             {
-                Console.WriteLine ("なんかおかしい", e);
+                Debug.WriteLine("ドメインなんかおかしい", e);
+                throw;
             }
         }
     }

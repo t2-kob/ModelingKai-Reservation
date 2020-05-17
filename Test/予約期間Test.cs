@@ -1,5 +1,6 @@
 using System;
 using Reservation.Domain;
+using Reservation.Domain.Exceptions;
 using Reservation.Domain.Reservations.Period;
 using Xunit;
 
@@ -178,7 +179,7 @@ namespace Test
             [Fact]
             public void 開始日時と終了日時が一緒のものは作れないよ()
             {
-                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                var ex = Assert.Throws<ドメインエラーException>(() =>
                 {
                     var me = new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 23), 予約開始_時._16, 予約_分._00),
                                         new 予約終了日時(new 予約年月日(2020, 2, 23), 予約終了_時._16, 予約_分._00));
@@ -187,7 +188,7 @@ namespace Test
             [Fact]
             public void 開始日時と終了日時が違う日付だったらエラーになること()
             {
-                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                var ex = Assert.Throws<ドメインエラーException>(() =>
                 {
                     var me = new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 22), 予約開始_時._16, 予約_分._00),
                                         new 予約終了日時(new 予約年月日(2020, 2, 23), 予約終了_時._16, 予約_分._00));
@@ -196,7 +197,7 @@ namespace Test
             [Fact]
             public void 終了日時より開始日時が未来であること()
             {
-                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                var ex = Assert.Throws<ドメインエラーException>(() =>
                 {
                     var me = new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 23), 予約開始_時._18, 予約_分._00),
                                         new 予約終了日時(new 予約年月日(2020, 2, 23), 予約終了_時._11, 予約_分._00));
@@ -208,7 +209,7 @@ namespace Test
             [Fact]
             public void 終了を19時15分としたので_範囲外でNGとなること()
             {
-                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                var ex = Assert.Throws<ドメインエラーException>(() =>
                 {
                     new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 10), 予約開始_時._18, 予約_分._15),
                                  new 予約終了日時(new 予約年月日(2020, 2, 10), 予約終了_時._19, 予約_分._15));
@@ -227,7 +228,7 @@ namespace Test
             [Fact]
             public void 終了を10時00分としたので_範囲外でNGとなること()
             {
-                var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
+                var ex = Assert.Throws<ドメインエラーException>(() =>
                 {
                     new 予約期間(new 予約開始日時(new 予約年月日(2020, 2, 10), 予約開始_時._10, 予約_分._00),
                                  new 予約終了日時(new 予約年月日(2020, 2, 10), 予約終了_時._10, 予約_分._00));

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reservation.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,7 +25,7 @@ namespace Reservation.Domain.Reservations.Period
             this.分 = 分;
 
             if (時間が予約範囲外である()) {
-                throw new ArgumentOutOfRangeException($"Over: {時}, {分}"); // TODO: 良い感じにしてね。
+                throw new ドメインエラーException(new ArgumentOutOfRangeException($"Over: {時}, {分}"));
             }
         }
 

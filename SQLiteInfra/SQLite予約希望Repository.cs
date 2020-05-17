@@ -41,13 +41,13 @@ namespace SQLiteInfra
 
                     cmd.ExecuteNonQuery ();
 
-                    cmd.CommandText = "Insert INTO reserve VALUES(" +
-                        "1," +
-                        "'RoomA'," +
-                        "'2020-05-20 10:00'," +
-                        "'2020-05-20 12:00')";
+                    // cmd.CommandText = "Insert INTO reserve VALUES(" +
+                    //     "2," +
+                    //     "'RoomA'," +
+                    //     "'2020-05-20 10:00'," +
+                    //     "'2020-05-20 12:00')";
 
-                    cmd.ExecuteNonQuery ();
+                    // cmd.ExecuteNonQuery ();
                 }
             }
         }

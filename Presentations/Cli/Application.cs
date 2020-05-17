@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Cli.Applications;
-using Cli.Exceptions;
-using Reservation.Domain.Exceptions;
 using Reservation.Domain.Reservations;
 using Reservation.Domain.Reservations.MeetingRooms;
 using Reservation.Domain.Reservations.Period;

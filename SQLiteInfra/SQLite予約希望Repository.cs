@@ -43,9 +43,9 @@ namespace SQLiteInfra
 
                     cmd.CommandText = "Insert INTO reserve VALUES(" +
                         "1," +
-                        "RoomA" +
-                        "2020-05-20 10:00" +
-                        "2020-05-20 12:00)";
+                        "'RoomA'," +
+                        "'2020-05-20 10:00'," +
+                        "'2020-05-20 12:00')";
 
                     cmd.ExecuteNonQuery ();
                 }

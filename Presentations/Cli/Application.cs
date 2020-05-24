@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using Cli.Applications;
+using Microsoft.Extensions.Logging;
 using Reservation.Domain.Reservations;
 using Reservation.Domain.Reservations.MeetingRooms;
 using Reservation.Domain.Reservations.Period;
@@ -12,7 +12,7 @@ namespace Cli
     {
         private readonly I予約希望Repository _repository;
 
-        public Application (I予約希望Repository repository)
+        public Application (I予約希望Repository repository, ILogger<IApplication> logger) : base(logger)
         {
             _repository = repository;
         }
@@ -28,7 +28,7 @@ namespace Cli
             var usecase = new ReservationUseCase (_repository);
             var 予約成功したか = usecase.予約する(予約希望);
 
-            Debug.WriteLine ($"予約成功したかどうか？ ==> {予約成功したか}");
+            Logger.LogInformation($"予約成功したかどうか？ ==> {予約成功したか}");
         }
 
         private 予約希望 予約希望つくる(string[] args)

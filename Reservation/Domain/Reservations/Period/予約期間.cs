@@ -55,14 +55,16 @@ namespace Reservation.Domain.Reservations.Period {
         }
 
 
-        public string 開始日時{
+        public string 開始日時()
+        {
 
-           return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            return _開始日時.AsDateTime().ToString("yyyy-MM-dd HH:mm"); //TODO: ss なしでもいける？？
         }
 
-        public string 終了日時{
+        public string 終了日時()
+        {
 
-            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            return _終了日時.AsDateTime().ToString("yyyy-MM-dd HH:mm"); //TODO: ss なしでもいける？？
         }
     }
 }

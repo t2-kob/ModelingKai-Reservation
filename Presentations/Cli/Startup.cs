@@ -40,10 +40,10 @@ namespace Cli
                     // collection.Configure<SampleSettings>(context.Configuration.GetSection(nameof(SampleSettings)));
 
                     // RepositoryÇÃDIê›íË
-                    collection.AddTransient<Ió\ñÒäÛñ]Repository, ó\ñÒäÛñ]Repository>();
+                    collection.AddSingleton<Ió\ñÒäÛñ]Repository, ó\ñÒäÛñ]Repository>();
 
-                    // ApplicationÇÃDIê›íË
-                    collection.AddTransient<IController, ó\ñÒÇ∑ÇÈController>();
+                    // ControllerÇÃDIê›íË
+                    collection.AddTransient<ó\ñÒController>();
                 });
     }
 }

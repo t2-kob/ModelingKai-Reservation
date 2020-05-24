@@ -7,11 +7,11 @@ using Reservation.Usecase;
 
 namespace Cli.Controllers
 {
-    public class 予約するController : BaseController
+    public class 予約Controller : BaseController
     {
         private readonly I予約希望Repository _repository;
 
-        public 予約するController(I予約希望Repository repository, ILogger<予約するController> logger) : base(logger)
+        public 予約Controller(I予約希望Repository repository, ILogger<予約Controller> logger) : base(logger)
         {
             _repository = repository;
         }

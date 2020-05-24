@@ -56,7 +56,7 @@ namespace SQLiteInfra
                         "start_datetime, " +
                         "end_datetime " +
                         "FROM reserve " + 
-                        "WHERE datetime(start_datetime) >= datetime(@DATETIME1) AND datetime(start_datetime) <= datetime(@DATETIME2)";
+                        "WHERE start_datetime >= datetime(@DATETIME1) AND start_datetime <= datetime(@DATETIME2)";
 
                     var dt1 = $"{予約年月日.Year.ToString()}-{予約年月日.Month.ToString("00")}-{予約年月日.Day.ToString("00")} 00:00:00.000";
                     var dt2 = $"{予約年月日.Year.ToString()}-{予約年月日.Month.ToString("00")}-{予約年月日.Day.ToString("00")} 23:59:59.999";

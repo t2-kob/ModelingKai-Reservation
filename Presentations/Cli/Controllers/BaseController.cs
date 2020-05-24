@@ -49,7 +49,7 @@ namespace Cli.Controllers
         /// </summary>
         protected virtual void Before()
         {
-            Logger.LogInformation("処理開始");
+            Logger.LogTrace("処理開始");
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Cli.Controllers
         /// </summary>
         protected virtual void After()
         {
-            Logger.LogInformation("処理完了");
+            Logger.LogTrace("処理完了");
         }
     }
 }

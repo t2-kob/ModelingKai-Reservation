@@ -44,6 +44,7 @@ namespace Cli
 
                     // ControllerÇÃDIê›íË
                     collection.AddTransient<ó\ñÒController>();
+                    collection.AddTransient<ó\ñÒàÍóóController>();
                 });
     }
 }

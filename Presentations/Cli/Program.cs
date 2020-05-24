@@ -27,6 +27,7 @@ namespace Cli
                 Console.Clear();
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1) 予約する");
+                Console.WriteLine("2) 予約一覧を表示する");
                 Console.WriteLine("9) Exit");
                 Console.Write("\r\nSelect an option: ");
 
@@ -60,6 +61,10 @@ namespace Cli
                         }
 
                         host.Services.GetRequiredService<予約Controller>().Run(new[] { room, startDateTime, endDateTime });
+                        return true;
+                    case "2":
+                        // TODO: パラメーター未実装
+                        host.Services.GetRequiredService<予約一覧Controller>().Run(new string[] { });
                         return true;
                     case "9":
                         return false;

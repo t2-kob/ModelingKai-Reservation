@@ -26,12 +26,6 @@ namespace Reservation.Domain.Reservations.Period {
 
             
         }
-
-        //TODO: 開始 >= 終了 がダメっていうルールがないぞ。当然未テスト。
-
-
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -50,30 +44,25 @@ namespace Reservation.Domain.Reservations.Period {
 
             return 時間かぶってますか;
         }
-
-
         internal bool かぶってますか(予約期間 other)
         {
             return 時間かぶってますか(other);
         }
-
-        //TODO: 日をまたいじゃダメにする。
-
         public bool 同じ日ですか(予約年月日 予約年月日)
         {
             return _開始日時.同じ日ですか(予約年月日)
                 || _終了日時.同じ日ですか(予約年月日);
         }
 
-        
 
+        public string 開始日時{
 
+           return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
 
-        //todo: ビジネスルール：30日以内までしか予約できない
+        public string 終了日時{
 
-        // TODO:開始時刻とコマ数の組み合わせで、ちゃんと10:00-19:00の範囲で収まるかどうかを調べたい
-        // TODO:開始時刻とコマ数の組み合わせで、終了時刻って実際何時なのか？
-        // ↑これいつ必要？
-
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
     }
 }

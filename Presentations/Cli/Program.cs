@@ -1,4 +1,4 @@
-﻿using Cli.Applications;
+﻿using Cli.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cli
@@ -9,7 +9,7 @@ namespace Cli
         {
             var host = Startup.CreateHostBuilder().Build();
 
-            var application = host.Services.GetRequiredService<IApplication>();
+            var application = host.Services.GetRequiredService<IController>();
 
             application.Run(args);
         }

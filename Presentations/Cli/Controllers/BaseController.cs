@@ -3,13 +3,13 @@ using Cli.Exceptions;
 using Microsoft.Extensions.Logging;
 using Reservation.Domain.Exceptions;
 
-namespace Cli.Applications
+namespace Cli.Controllers
 {
-    public abstract class BaseApplication : IApplication
+    public abstract class BaseController : IController
     {
-        protected readonly ILogger<IApplication> Logger;
+        protected readonly ILogger<IController> Logger;
 
-        protected BaseApplication(ILogger<IApplication> logger)
+        protected BaseController(ILogger<IController> logger)
         {
             Logger = logger;
         }

@@ -1,5 +1,5 @@
 using System.IO;
-using Cli.Applications;
+using Cli.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,7 +43,7 @@ namespace Cli
                     collection.AddTransient<Ió\ñÒäÛñ]Repository, ó\ñÒäÛñ]Repository>();
 
                     // ApplicationÇÃDIê›íË
-                    collection.AddTransient<IApplication, Application>();
+                    collection.AddTransient<IController, ó\ñÒÇ∑ÇÈController>();
                 });
     }
 }

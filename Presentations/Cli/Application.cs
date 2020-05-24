@@ -12,7 +12,7 @@ namespace Cli
     {
         private readonly I予約希望Repository _repository;
 
-        public Application(I予約希望Repository repository, ILogger<IApplication> logger) : base(logger)
+        public Application(I予約希望Repository repository, ILogger<Application> logger) : base(logger)
         {
             _repository = repository;
         }

@@ -1,4 +1,4 @@
-using System.IO;
+ï»¿using System.IO;
 using Cli.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,13 +22,13 @@ namespace Cli
             Host.CreateDefaultBuilder()
                 .ConfigureLogging(logging =>
                 {
-                    // ƒƒO‹@”\‚ÌDIİ’è
+                    // ãƒ­ã‚°æ©Ÿèƒ½ã®DIè¨­å®š
                     logging.AddConsole();
                     logging.AddDebug();
                 })
                 .ConfigureAppConfiguration(builder =>
                 {
-                    // İ’èƒtƒ@ƒCƒ‹“Ç‚İ‚İ
+                    // è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
                     builder.SetBasePath(Directory.GetCurrentDirectory());
                     builder.AddJsonFile("appsettings.json");
                     builder.AddJsonFile($"appsettings.{Env}.json");
@@ -36,15 +36,15 @@ namespace Cli
                 })
                 .ConfigureServices((context, collection) =>
                 {
-                    // SampleSettings‚ÌDIİ’è
+                    // SampleSettingsã®DIè¨­å®š
                     // collection.Configure<SampleSettings>(context.Configuration.GetSection(nameof(SampleSettings)));
 
-                    // Repository‚ÌDIİ’è
-                    collection.AddSingleton<I—\–ñŠó–]Repository, —\–ñŠó–]Repository>();
+                    // Repositoryã®DIè¨­å®š
+                    collection.AddSingleton<Iäºˆç´„å¸Œæœ›Repository, äºˆç´„å¸Œæœ›Repository>();
 
-                    // Controller‚ÌDIİ’è
-                    collection.AddTransient<—\–ñController>();
-                    collection.AddTransient<—\–ñˆê——Controller>();
+                    // Controllerã®DIè¨­å®š
+                    collection.AddTransient<äºˆç´„Controller>();
+                    collection.AddTransient<äºˆç´„ä¸€è¦§Controller>();
                 });
     }
 }

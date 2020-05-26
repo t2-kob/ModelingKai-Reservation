@@ -29,19 +29,13 @@ namespace Cli
                 Console.WriteLine("9) Exit");
                 Console.Write("\r\nSelect an option: ");
 
-                switch (Console.ReadLine())
+                return Console.ReadLine() switch
                 {
-                    case "1":
-                        予約する(host);
-                        return true;
-                    case "2":
-                        予約一覧を表示する(host);
-                        return true;
-                    case "9":
-                        return false;
-                    default:
-                        return true;
-                }
+                    "1" => 予約する(host),
+                    "2" => 予約一覧を表示する(host),
+                    "9" => false,
+                    _ => true
+                };
             }
             finally
             {
@@ -50,7 +44,7 @@ namespace Cli
             }
         }
 
-        private static void 予約する(IHost host)
+        private static bool 予約する(IHost host)
         {
             var now = DateTime.Now;
 
@@ -81,12 +75,16 @@ namespace Cli
             }
 
             host.Services.GetRequiredService<予約Controller>().Run(new[] { room, startDateTime, endDateTime });
+
+            return true;
         }
 
-        private static void 予約一覧を表示する(IHost host)
+        private static bool 予約一覧を表示する(IHost host)
         {
             // TODO: パラメーター未実装
             host.Services.GetRequiredService<予約一覧Controller>().Run(new string[] { });
+
+            return true;
         }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Reservation.Domain.Reservations;
 using Reservation.Infrastructure;
+using SQLiteInfra;
 
 namespace Cli
 {
@@ -51,7 +52,7 @@ namespace Cli
                     // collection.Configure<SampleSettings>(context.Configuration.GetSection(nameof(SampleSettings)));
 
                     // RepositoryのDI設定
-                    collection.AddTransient<I予約希望Repository, 予約希望Repository>();
+                    collection.AddTransient<I予約希望Repository, SQLite予約希望Repository>();
 
                     // ApplicationのDI設定
                     collection.AddTransient<IApplication, Application>();

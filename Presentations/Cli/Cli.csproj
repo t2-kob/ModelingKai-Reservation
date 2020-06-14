@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Reservation\Reservation.csproj" />
+    <ProjectReference Include="..\..\SQLiteInfra\SQLiteInfra.csproj" />
   </ItemGroup>
 
   <ItemGroup>

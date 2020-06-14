@@ -40,7 +40,7 @@ namespace Cui
                     // collection.Configure<SampleSettings>(context.Configuration.GetSection(nameof(SampleSettings)));
 
                     // RepositoryのDI設定
-                    collection.AddSingleton<I予約希望Repository, 予約希望Repository>();
+                    collection.AddSingleton<I予約希望Repository, InMemory予約希望Repository>();
 
                     // ControllerのDI設定
                     collection.AddTransient<予約Controller>();

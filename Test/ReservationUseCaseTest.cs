@@ -20,7 +20,7 @@ namespace Test
                             new 予約終了日時(new 予約年月日(2020, 3, 15), 予約終了_時._16, 予約_分._15)),
                 new 想定使用人数());
 
-            var useCase = new ReservationUseCase (new 予約希望Repository ());
+            var useCase = new ReservationUseCase (new InMemory予約希望Repository ());
             var 予約できた = useCase.予約する(予約希望);
             予約できた.ShouldBeTrue ();
         }
@@ -34,7 +34,7 @@ namespace Test
                             new 予約終了日時(new 予約年月日(2020, 3, 15), 予約終了_時._16, 予約_分._15)),
                 new 想定使用人数());
 
-            var useCase = new ReservationUseCase (new 予約希望Repository ());
+            var useCase = new ReservationUseCase (new InMemory予約希望Repository ());
 
             var 予約できた = useCase.予約する(予約希望);
             予約できた.ShouldBeTrue ();

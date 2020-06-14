@@ -32,6 +32,7 @@ namespace Test
             this.output = output;
 
             dbInitializer = new SqliteInitializer();
+            dbInitializer.CleanUpDateStore();
             dbInitializer.CreateDataStore();
         }
 
@@ -43,6 +44,7 @@ namespace Test
         /// </remarks>
         public void Dispose()
         {
+            // テスト後の結果を見たいので、dbInitializer.CleanUpDateStore(); はしない。
         }
 
 

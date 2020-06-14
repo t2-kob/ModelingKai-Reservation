@@ -7,5 +7,6 @@ namespace Reservation.Infrastructure
     public interface IDataStoreIntitalizer
     {
         void CreateDataStore();
+        void CleanUpDateStore();
     }
 }

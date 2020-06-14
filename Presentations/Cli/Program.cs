@@ -25,8 +25,11 @@ namespace Cli
         {
             var host = CreateHostBuilder().Build();
 
-            var application = host.Services.GetRequiredService<IApplication>();
 
+            var dataStoreInitializer = host.Services.GetRequiredService<IDataStoreIntitalizer>();
+            dataStoreInitializer.CreateDataStore();
+
+            var application = host.Services.GetRequiredService<IApplication>();
             application.Run(args);
         }
 
@@ -52,10 +55,12 @@ namespace Cli
                     // collection.Configure<SampleSettings>(context.Configuration.GetSection(nameof(SampleSettings)));
 
                     // RepositoryのDI設定
+                    collection.AddTransient<IDataStoreIntitalizer, SqliteInitializer>();
                     collection.AddTransient<I予約希望Repository, SQLite予約希望Repository>();
 
                     // ApplicationのDI設定
                     collection.AddTransient<IApplication, Application>();
+
                 });
     }
 }

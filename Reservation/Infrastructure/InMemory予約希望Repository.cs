@@ -9,7 +9,7 @@ namespace Reservation.Infrastructure
     /// <summary>
     /// インメモリでのリポジトリ
     /// </summary>
-    public class 予約希望Repository : I予約希望Repository
+    public class InMemory予約希望Repository : I予約希望Repository
     {
         // 予約済みはDomainの持ち物。全部リポジトリの中身をとってきて、
         // かぶってるかを確認する振る舞いをどこかに持たせる(ファーストクラスコレクション？)

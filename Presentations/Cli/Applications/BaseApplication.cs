@@ -1,12 +1,19 @@
 ﻿using System;
-using System.Diagnostics;
 using Cli.Exceptions;
+using Microsoft.Extensions.Logging;
 using Reservation.Domain.Exceptions;
 
 namespace Cli.Applications
 {
     public abstract class BaseApplication : IApplication
     {
+        protected readonly ILogger<IApplication> Logger;
+
+        protected BaseApplication(ILogger<IApplication> logger)
+        {
+            Logger = logger;
+        }
+
         /// <summary>
         /// エントリポイント
         /// </summary>
@@ -20,16 +27,16 @@ namespace Cli.Applications
             }
             catch (UI入出力がおかしいぞException e)
             {
-                Debug.WriteLine("UIなんかおかしい", e);
+                Logger.LogError("UIなんかおかしい", e);
             }
             catch (ドメインエラーException e)
             {
-                Debug.WriteLine("ドメインなんかおかしい", e);
+                Logger.LogError("ドメインなんかおかしい", e);
             }
             catch (Exception e)
             {
                 // TODO: システム例外/アプリケーション例外/ドメイン例外をどうする？
-                Debug.WriteLine("予期せぬエラーです", e);
+                Logger.LogError("予期せぬエラーです", e);
             }
             finally
             {
@@ -42,7 +49,7 @@ namespace Cli.Applications
         /// </summary>
         protected virtual void Before()
         {
-            Debug.WriteLine("処理開始");
+            Logger.LogInformation("処理開始");
         }
 
         /// <summary>
@@ -55,7 +62,7 @@ namespace Cli.Applications
         /// </summary>
         protected virtual void After()
         {
-            Debug.WriteLine("処理完了");
+            Logger.LogInformation("処理完了");
         }
     }
 }

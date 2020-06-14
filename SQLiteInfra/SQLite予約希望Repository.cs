@@ -93,38 +93,41 @@ namespace SQLiteInfra
             }
         }
 
-        /// <summary>
-        /// staticコンストラクタ
-        /// 必ず呼ばれるので、こっちが良い
-        /// </summary>
-        static SQLite予約希望Repository()
-        {
-            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
 
-            using (var cn = new SQLiteConnection (sqlConnectionSb.ToString()))
-            {
-                cn.Open();
 
-                using (var cmd = new SQLiteCommand(cn))
-                {
-                    // テーブル作成
-                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS reserve(" +
-                        "id TEXT NOT NULL PRIMARY KEY," + // 
-                        "room_name TEXT NOT NULL," +
-                        "start_datetime DATE NOT NULL," + // 2020-05-20 10:00
-                        "end_datetime DATE NOT NULL)"; // 2020-05-20 13:00
 
-                    cmd.ExecuteNonQuery();
+        ///// <summary>
+        ///// staticコンストラクタ
+        ///// 必ず呼ばれるので、こっちが良い
+        ///// </summary>
+        //static SQLite予約希望Repository()
+        //{
+        //    var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
 
-                    // cmd.CommandText = "Insert INTO reserve VALUES(" +
-                    //     "2," +
-                    //     "'RoomA'," +
-                    //     "'2020-05-20 10:00'," +
-                    //     "'2020-05-20 12:00')";
+        //    using (var cn = new SQLiteConnection (sqlConnectionSb.ToString()))
+        //    {
+        //        cn.Open();
 
-                    // cmd.ExecuteNonQuery();
-                }
-            }
-        }
+        //        using (var cmd = new SQLiteCommand(cn))
+        //        {
+        //            // テーブル作成
+        //            cmd.CommandText = "CREATE TABLE IF NOT EXISTS reserve(" +
+        //                "id TEXT NOT NULL PRIMARY KEY," + // 
+        //                "room_name TEXT NOT NULL," +
+        //                "start_datetime DATE NOT NULL," + // 2020-05-20 10:00
+        //                "end_datetime DATE NOT NULL)"; // 2020-05-20 13:00
+
+        //            cmd.ExecuteNonQuery();
+
+        //            // cmd.CommandText = "Insert INTO reserve VALUES(" +
+        //            //     "2," +
+        //            //     "'RoomA'," +
+        //            //     "'2020-05-20 10:00'," +
+        //            //     "'2020-05-20 12:00')";
+
+        //            // cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
     }
 }

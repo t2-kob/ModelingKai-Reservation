@@ -1,19 +1,52 @@
 using System;
+using System.Diagnostics;
 using Reservation.Domain;
 using Reservation.Domain.Exceptions;
 using Reservation.Domain.Reservations;
 using Reservation.Domain.Reservations.MeetingRooms;
 using Reservation.Domain.Reservations.Period;
+using Reservation.Infrastructure;
 using Shouldly;
 using SQLiteInfra;
 using Xunit;
-
+using Xunit.Abstractions;
 
 namespace Test
 {
 
-    public class SQLite予約希望RepositoryTest
+    public class SQLite予約希望RepositoryTest : IDisposable
     {
+        private readonly ITestOutputHelper output;
+        private readonly IDataStoreIntitalizer dbInitializer;
+
+
+
+        /// <summary>
+        /// SetUp
+        /// </summary>
+        /// <remarks>
+        /// Fact のたびに呼ばれます。
+        /// </remarks>
+        public SQLite予約希望RepositoryTest(ITestOutputHelper output)
+        {
+            this.output = output;
+
+            dbInitializer = new SqliteInitializer();
+            dbInitializer.CreateDataStore();
+        }
+
+        /// <summary>
+        /// TearDown
+        /// </summary>
+        /// <remarks>
+        /// Fact のたびに呼ばれます。
+        /// </remarks>
+        public void Dispose()
+        {
+        }
+
+
+
         [Fact]
         public void SQLiteのDBファイルが作れること()
         {

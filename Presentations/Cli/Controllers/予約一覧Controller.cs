@@ -1,11 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 using Reservation.Domain.Reservations;
-using Reservation.Domain.Reservations.MeetingRooms;
-using Reservation.Domain.Reservations.Period;
-using Reservation.Usecase;
 
-namespace Cli.Controllers
+namespace Cui.Controllers
 {
     public class 予約一覧Controller : BaseController
     {

@@ -1,9 +1,7 @@
-﻿using Reservation.Domain.Reservations.Period;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Reservation.Domain.Reservations.Period;
 
-namespace Cli
+namespace Cui
 {
     public static class 予約時間Parser
     {

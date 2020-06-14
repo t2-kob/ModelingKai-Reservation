@@ -1,9 +1,9 @@
 ﻿using System;
-using Cli.Controllers;
+using Cui.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Cli
+namespace Cui
 {
     class Program
     {

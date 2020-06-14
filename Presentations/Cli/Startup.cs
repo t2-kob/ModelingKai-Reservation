@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Cli.Controllers;
+using Cui.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Reservation.Domain.Reservations;
 using Reservation.Infrastructure;
 
-namespace Cli
+namespace Cui
 {
     internal static class Startup
     {

@@ -5,7 +5,7 @@ using Reservation.Domain.Reservations.MeetingRooms;
 using Reservation.Domain.Reservations.Period;
 using Reservation.Usecase;
 
-namespace Cli.Controllers
+namespace Cui.Controllers
 {
     public class 予約Controller : BaseController
     {

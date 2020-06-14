@@ -1,9 +1,9 @@
 ﻿using System;
-using Cli.Exceptions;
+using Cui.Exceptions;
 using Microsoft.Extensions.Logging;
 using Reservation.Domain.Exceptions;
 
-namespace Cli.Controllers
+namespace Cui.Controllers
 {
     public abstract class BaseController : IController
     {

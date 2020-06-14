@@ -1,4 +1,4 @@
-﻿namespace Cli.Controllers
+﻿namespace Cui.Controllers
 {
     public interface IController
     {

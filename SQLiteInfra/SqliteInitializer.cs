@@ -8,6 +8,24 @@ namespace SQLiteInfra
 {
     public class SqliteInitializer : IDataStoreIntitalizer
     {
+        public void CleanUpDateStore()
+        {
+            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
+
+            using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
+            {
+                cn.Open();
+
+                using (var cmd = new SQLiteCommand(cn))
+                {
+                    // テーブル作成
+                    cmd.CommandText = "DROP TABLE IF EXISTS reserve";
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void CreateDataStore() {
             var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
 

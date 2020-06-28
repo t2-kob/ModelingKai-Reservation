@@ -1,25 +1,19 @@
 ﻿using System;
-using Cli.Applications;
-// using Cli.Configs;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Reservation.Domain.Reservations;
 using Reservation.Domain.Reservations.MeetingRooms;
 using Reservation.Domain.Reservations.Period;
 using Reservation.Usecase;
 
-namespace Cli
+namespace Cui.Controllers
 {
-    public class Application : BaseApplication
+    public class 予約Controller : BaseController
     {
         private readonly I予約希望Repository _repository;
-        // private readonly SampleSettings _sampleSettings;
 
-        public Application(I予約希望Repository repository, ILogger<IApplication> logger) : base(logger)
-        // public Application(I予約希望Repository repository, ILogger<IApplication> logger, IOptions<SampleSettings> options) : base(logger)
+        public 予約Controller(I予約希望Repository repository, ILogger<予約Controller> logger) : base(logger)
         {
             _repository = repository;
-            // _sampleSettings = options.Value;
         }
 
         /// <summary>
@@ -34,7 +28,6 @@ namespace Cli
             var 予約成功したか = usecase.予約する(予約希望);
 
             Logger.LogInformation($"予約成功したかどうか？ ==> {予約成功したか}");
-            // Logger.LogInformation(_sampleSettings.Key);
         }
 
         private 予約希望 予約希望つくる(string[] args)

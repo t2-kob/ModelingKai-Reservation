@@ -12,31 +12,33 @@ namespace DapperSQLiteInfra
     {
         public void Save(予約希望 予約希望)
         {
-            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
 
-            using (var cn = new SQLiteConnection (sqlConnectionSb.ToString()))
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+
+
+            string id = Guid.NewGuid().ToString();
+            var dapper予約希望 = new Dapper予約希望
             {
+                ID = id,
+                ROOM_NAME = 予約希望.Room.DisplayName,
+                START_DATE_TIME = 予約希望.Range.開始日時(),
+                END_DATE_TIME = 予約希望.Range.終了日時()
+            };
+
+
+            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
+            using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
+            {
+
+                var sql = "Insert INTO reserve VALUES(" +
+                                "@ID," +
+                                "@ROOM_NAME," +
+                                "@START_DATE_TIME," +
+                                "@END_DATE_TIME)";
+
+
                 cn.Open();
-
-                using (var cmd = new SQLiteCommand(cn))
-                {
-                    string id = Guid.NewGuid().ToString();
-                    cmd.CommandText = "Insert INTO reserve VALUES(" +
-                        "@ID," +
-                        "@ROOM_NAME," +
-                        "@START_DATE_TIME," +
-                        "@END_DATE_TIME)";
-
-                    // if 予約希望.Room.AsString() == hogehoge みたいなこと書けるぜ
-                    // if 予約希望.Room.ToString() これだと、なにが返ってくるかわからない？
-                    // ToString()が返すなのかが、クラス名なのか、会議室名なのか、わかりづらい？？
-
-                    cmd.Parameters.Add(new SQLiteParameter("@ID", id));
-                    cmd.Parameters.Add(new SQLiteParameter("@ROOM_NAME", 予約希望.Room.DisplayName));
-                    cmd.Parameters.Add(new SQLiteParameter("@START_DATE_TIME", 予約希望.Range.開始日時())); // 2020-05-20 10:00
-                    cmd.Parameters.Add(new SQLiteParameter("@END_DATE_TIME", 予約希望.Range.終了日時())); // 2020-05-20 12:00
-                    cmd.ExecuteNonQuery();
-                }
+                var insertedRowCount = cn.Execute(sql, dapper予約希望);
             }
         }
 
@@ -44,18 +46,18 @@ namespace DapperSQLiteInfra
         {
             var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
 
-            using (var cn = new SQLiteConnection (sqlConnectionSb.ToString()))
+            using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
             {
                 cn.Open();
 
                 using (var cmd = new SQLiteCommand(cn))
                 {
-                    cmd.CommandText = "SELECT " + 
+                    cmd.CommandText = "SELECT " +
                         "id," +
                         "room_name, " +
                         "start_datetime, " +
                         "end_datetime " +
-                        "FROM reserve " + 
+                        "FROM reserve " +
                         "WHERE start_datetime >= datetime(@DATETIME1) AND start_datetime <= datetime(@DATETIME2)";
 
                     var dt1 = $"{予約年月日.Year.ToString()}-{予約年月日.Month.ToString("00")}-{予約年月日.Day.ToString("00")} 00:00:00.000";
@@ -69,14 +71,14 @@ namespace DapperSQLiteInfra
                     while (reader.Read())
                     {
                         var room_name = reader["room_name"].ToString(); // A
-                        var start_datetime = reader["start_datetime"].ToString(); 
+                        var start_datetime = reader["start_datetime"].ToString();
                         var end_datetime = reader["end_datetime"].ToString();
 
                         //2020-05-20 12:00
-                        var sdt = DateTime.Parse(start_datetime); 
+                        var sdt = DateTime.Parse(start_datetime);
                         var 開始予約年月日 = new 予約年月日(sdt.Year, sdt.Month, sdt.Day);
-                        
-                        var edt = DateTime.Parse(end_datetime); 
+
+                        var edt = DateTime.Parse(end_datetime);
                         var 終了予約年月日 = new 予約年月日(edt.Year, edt.Month, edt.Day);
 
                         var yoyaku = new 予約済み(new MeetingRoom(Enum.Parse<MeetingRoomName>(room_name)),

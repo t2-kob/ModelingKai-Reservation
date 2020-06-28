@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using DapperSQLiteInfra;
 using Reservation.Domain;
 using Reservation.Domain.Exceptions;
 using Reservation.Domain.Reservations;
@@ -14,7 +15,7 @@ using Xunit.Abstractions;
 namespace Test
 {
 
-    public class SQLite予約希望RepositoryTest : IDisposable
+    public class DapperSQLite予約希望RepositoryTest : IDisposable
     {
         private readonly ITestOutputHelper output;
         private readonly IDataStoreIntitalizer dbInitializer;
@@ -27,7 +28,7 @@ namespace Test
         /// <remarks>
         /// Fact のたびに呼ばれます。
         /// </remarks>
-        public SQLite予約希望RepositoryTest(ITestOutputHelper output)
+        public DapperSQLite予約希望RepositoryTest(ITestOutputHelper output)
         {
             this.output = output;
 
@@ -53,7 +54,7 @@ namespace Test
             // SQLite予約希望Repositoryが、一番はじめに初期化されたとき？
             // DBファイル作る？
         
-            var repository = new SQLite予約希望Repository();
+            var repository = new DapperSQLite予約希望Repository();
 
             // SQLiteInfra/reserve.db みたいなのができてほしい。
             // とりあえず目視でいいか
@@ -67,7 +68,7 @@ namespace Test
         {
             // TODO: テスト名
             
-            var repository = new SQLite予約希望Repository();
+            var repository = new DapperSQLite予約希望Repository();
 
             var meetingRoom = new MeetingRoom(MeetingRoomName.A);
 

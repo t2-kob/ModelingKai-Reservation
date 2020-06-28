@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cui", "Presentations\Cui\Cu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cli", "Presentations\Cli\Cli.csproj", "{B2C1C949-0E19-4FF2-AE41-B05373970B70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperSQLiteInfra", "DapperSQLiteInfra\DapperSQLiteInfra.csproj", "{A19E6CD2-6D06-4224-B5AA-7D76F74A4560}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{B2C1C949-0E19-4FF2-AE41-B05373970B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2C1C949-0E19-4FF2-AE41-B05373970B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2C1C949-0E19-4FF2-AE41-B05373970B70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19E6CD2-6D06-4224-B5AA-7D76F74A4560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19E6CD2-6D06-4224-B5AA-7D76F74A4560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19E6CD2-6D06-4224-B5AA-7D76F74A4560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19E6CD2-6D06-4224-B5AA-7D76F74A4560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

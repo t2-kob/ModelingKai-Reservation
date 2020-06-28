@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Text;
+using Dapper;
 
 namespace DapperSQLiteInfra
 {
     [DataContract(Name = "reserve")]
     public class Dapper予約希望
     {
-        //[DataMember(Name = "ID")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
-        //[DataMember(Name = "ROOM_NAME")]
-        public string ROOM_NAME { get; set; }
+        public string RoomName { get; set; }
 
-        //[DataMember(Name = "START_DATE_TIME")]
-        public string START_DATE_TIME { get; set; }
+        public string StartDateTime { get; set; }
 
-        //[DataMember(Name = "END_DATE_TIME")]
-        public string END_DATE_TIME { get; set; }
+        public string EndDateTime { get; set; }
     }
 }

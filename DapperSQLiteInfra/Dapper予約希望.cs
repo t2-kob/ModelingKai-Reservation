@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
 using System.Text;
-using Dapper;
 
 namespace DapperSQLiteInfra
 {
-    [DataContract(Name = "reserve")]
-    public class Dapper予約希望
+
+    /// <remarks>
+    /// ReserveTableRow は、いわゆるDTOとしての構造体
+    /// </remarks>
+    internal class ReserveTableRow
     {
         public string Id { get; set; }
 

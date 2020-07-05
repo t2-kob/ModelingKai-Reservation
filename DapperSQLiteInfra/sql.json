@@ -1,0 +1,6 @@
+{
+  "SqlString": {
+    "Select": "SELECT id, room_name, start_datetime, end_datetime FROM reserve WHERE start_datetime >= datetime(@DateTimeFrom) AND start_datetime <= datetime(@DateTimeTo)",
+    "Insert": "Insert INTO reserve VALUES(@Id,@RoomName,@StartDateTime,@EndDateTime)"
+  }
+}

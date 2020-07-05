@@ -47,12 +47,15 @@ namespace Cli
                     builder.SetBasePath(Directory.GetCurrentDirectory());
                     builder.AddJsonFile("appsettings.json");
                     builder.AddJsonFile($"appsettings.{Env}.json");
+                    // builder.AddJsonFile("sql.json");
                     builder.AddEnvironmentVariables();
                 })
                 .ConfigureServices((context, collection) =>
                 {
                     // SampleSettingsのDI設定
                     // collection.Configure<SampleSettings>(context.Configuration.GetSection(nameof(SampleSettings)));
+                    // query.json 読み込み
+                    // collection.Configure<SqlString>(context.Configuration.GetSection(nameof(SqlString)));
 
                     // RepositoryのDI設定
                     collection.AddTransient<IDataStoreIntitalizer, SqliteInitializer>();

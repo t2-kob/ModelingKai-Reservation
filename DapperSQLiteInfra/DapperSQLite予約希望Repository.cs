@@ -16,6 +16,9 @@ namespace DapperSQLiteInfra
 
     public class DapperSQLite予約希望Repository : I予約希望Repository
     {
+        const string DB_FILE_NAME = "reserve.db";
+
+
         public void Save(予約希望 予約希望)
         {
 
@@ -31,7 +34,7 @@ namespace DapperSQLiteInfra
 
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
 
-            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
+            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = DB_FILE_NAME };
             using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
             {
                 var sql = "Insert INTO reserve VALUES(" +
@@ -49,22 +52,14 @@ namespace DapperSQLiteInfra
         {
             var queryWithParameter = 指定された日の予約一覧を取得するクエリを生成する(予約年月日);
 
-            var data = DBから予約済み群を取ってくる(queryWithParameter.template,
-                                                            queryWithParameter.parameter,
-                                                            "reserve.db");
+            var data = DBから予約の一覧を取ってくる(queryWithParameter.template,
+                                                    queryWithParameter.parameter,
+                                                    DB_FILE_NAME);
 
-            return new 予約済み群(data.Select(ToDomain));
+            return ドメインオブジェクトに変換する(data);
         }
 
-        private IEnumerable<ReserveTableRow> DBから予約済み群を取ってくる(QueryTemplate template, QueryParameter parameter, string dataSource)
-        {
-            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = dataSource };
-            using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
-            {
-                cn.Open();
-                return cn.Query<ReserveTableRow>(template, parameter);
-            }
-        }
+
 
         private (QueryTemplate template, QueryParameter parameter) 指定された日の予約一覧を取得するクエリを生成する(予約年月日 予約年月日)
         {
@@ -85,9 +80,23 @@ namespace DapperSQLiteInfra
             "FROM reserve " +
             "WHERE start_datetime >= datetime(@DateTimeFrom) " +
             "AND start_datetime <= datetime(@DateTimeTo)";
+        
+        private IEnumerable<ReserveTableRow> DBから予約の一覧を取ってくる(QueryTemplate template, QueryParameter parameter, string dataSource)
+        {
+            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = dataSource };
+            using var cn = new SQLiteConnection(sqlConnectionSb.ToString());
+
+            cn.Open();
+            return cn.Query<ReserveTableRow>(template, parameter);
+        }
 
 
-        private 予約済み ToDomain(ReserveTableRow row)
+        private 予約済み群 ドメインオブジェクトに変換する(IEnumerable<ReserveTableRow> rows)
+        {
+            return new 予約済み群(rows.Select(ドメインオブジェクトに変換する));
+        }
+
+        private 予約済み ドメインオブジェクトに変換する(ReserveTableRow row)
         {
             var sdt = DateTime.Parse(row.StartDateTime);
             var 開始予約年月日 = new 予約年月日(sdt.Year, sdt.Month, sdt.Day);

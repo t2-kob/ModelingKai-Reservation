@@ -43,6 +43,16 @@ namespace DapperSQLiteInfra
 
         public 予約済み群 この日の予約一覧をください(予約年月日 予約年月日)
         {
+            // 引数をもらう
+            
+            // クエリを組み立てる（事前工事する）
+            
+            // コネクションして、DBからデータを取ってくる
+            
+            // ドメインモデル変換
+            
+            // returnする
+            
             var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
             using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
             {
@@ -68,7 +78,8 @@ namespace DapperSQLiteInfra
             "  start_datetime, " +
             "  end_datetime " +
             "FROM reserve " +
-            "WHERE start_datetime >= datetime(@DateTimeFrom) AND start_datetime <= datetime(@DateTimeTo)";
+            "WHERE start_datetime >= datetime(@DateTimeFrom) " +
+            "AND start_datetime <= datetime(@DateTimeTo)";
 
 
         private 予約済み ToDomain(ReserveTableRow row)
@@ -79,9 +90,11 @@ namespace DapperSQLiteInfra
             var edt = DateTime.Parse(row.EndDateTime);
             var 終了予約年月日 = new 予約年月日(edt.Year, edt.Month, edt.Day);
 
-            return new 予約済み(new MeetingRoom(Enum.Parse<MeetingRoomName>(row.RoomName)),
-                new ReserverId(),
-                new 予約期間(new 予約開始日時(開始予約年月日, (予約開始_時)sdt.Hour, (予約_分)sdt.Minute),
+            return new 予約済み(
+                new MeetingRoom(Enum.Parse<MeetingRoomName>(row.RoomName)),
+                new ReserverId(), 
+                new 予約期間(
+                    new 予約開始日時(開始予約年月日, (予約開始_時)sdt.Hour, (予約_分)sdt.Minute),
                     new 予約終了日時(終了予約年月日, (予約終了_時)edt.Hour, (予約_分)edt.Minute)),
                 new 想定使用人数());
         }

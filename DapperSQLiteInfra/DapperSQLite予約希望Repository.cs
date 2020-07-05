@@ -10,6 +10,8 @@ using System.Text;
 
 namespace DapperSQLiteInfra
 {
+
+
     public class DapperSQLite予約希望Repository : I予約希望Repository
     {
         public void Save(予約希望 予約希望)
@@ -43,32 +45,31 @@ namespace DapperSQLiteInfra
 
         public 予約済み群 この日の予約一覧をください(予約年月日 予約年月日)
         {
-            // 引数をもらう
-            
             // クエリを組み立てる（事前工事する）
-            
+            var queryWithParameter = BuildQuery(予約年月日);
+
             // コネクションして、DBからデータを取ってくる
-            
-            // ドメインモデル変換
-            
-            // returnする
-            
             var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = "reserve.db" };
             using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
             {
                 cn.Open();
-                var result = cn.Query<ReserveTableRow>(SelectReserveSql, new
+                var result = cn.Query<ReserveTableRow>(queryWithParameter.sql, queryWithParameter.param);
+
+
+                // ドメインモデル変換
+                return new 予約済み群(result.Select(ToDomain));
+            }
+        }
+
+
+        private (string sql, object param) BuildQuery(予約年月日 予約年月日)
+        {
+            return (SelectReserveSql,
+                new
                 {
                     DateTimeFrom = $"{予約年月日.Year.ToString()}-{予約年月日.Month.ToString("00")}-{予約年月日.Day.ToString("00")} 00:00:00.000",
                     DateTimeTo = $"{予約年月日.Year.ToString()}-{予約年月日.Month.ToString("00")}-{予約年月日.Day.ToString("00")} 23:59:59.999",
                 });
-
-
-                var results = result.Select(ToDomain);
-
-                return new 予約済み群(results);
-
-            }
         }
 
         const string SelectReserveSql =

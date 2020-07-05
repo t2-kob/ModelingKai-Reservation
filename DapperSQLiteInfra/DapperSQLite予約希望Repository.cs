@@ -52,19 +52,17 @@ namespace DapperSQLiteInfra
             var data = DBから予約済み群を取ってくる(queryWithParameter.template,
                                                             queryWithParameter.parameter,
                                                             "reserve.db");
-            return data;
+
+            return new 予約済み群(data.Select(ToDomain));
         }
 
-        private 予約済み群 DBから予約済み群を取ってくる(QueryTemplate template, QueryParameter parameter, string dataSource)
+        private IEnumerable<ReserveTableRow> DBから予約済み群を取ってくる(QueryTemplate template, QueryParameter parameter, string dataSource)
         {
             var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = dataSource };
             using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
             {
                 cn.Open();
-                var result = cn.Query<ReserveTableRow>(template, parameter);
-                
-                // ドメインモデル変換
-                return new 予約済み群(result.Select(ToDomain));
+                return cn.Query<ReserveTableRow>(template, parameter);
             }
         }
 

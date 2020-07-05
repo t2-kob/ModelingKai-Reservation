@@ -18,39 +18,29 @@ namespace DapperSQLiteInfra
     {
         const string DB_FILE_NAME = "reserve.db";
 
-
         public void Save(予約希望 予約希望)
         {
-
-            var dapper予約希望 = new ReserveTableRow
-            {
-                Id = Guid.NewGuid().ToString(),
-                RoomName = 予約希望.Room.DisplayName,
-                StartDateTime = 予約希望.Range.開始日時(),
-                EndDateTime = 予約希望.Range.終了日時()
-            };
-
-
-
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            
+            var queryWithParameter = QueryBuilder.予約を保存するクエリを生成する(予約希望);
+            
+            DBにSaveする(queryWithParameter.template,
+                        queryWithParameter.parameter,
+                        DB_FILE_NAME);
+        }
 
-            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = DB_FILE_NAME };
-            using (var cn = new SQLiteConnection(sqlConnectionSb.ToString()))
-            {
-                var sql = "Insert INTO reserve VALUES(" +
-                                "@Id," +
-                                "@RoomName," +
-                                "@StartDateTime," +
-                                "@EndDateTime)";
+        private void DBにSaveする(string template, object parameter, string dbFileName)
+        {
+            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = dbFileName };
 
-                cn.Open();
-                var insertedRowCount = cn.Execute(sql, dapper予約希望);
-            }
+            using var cn = new SQLiteConnection(sqlConnectionSb.ToString());
+            cn.Open();
+            cn.Execute(template, parameter);
         }
 
         public 予約済み群 この日の予約一覧をください(予約年月日 予約年月日)
         {
-            var queryWithParameter = 指定された日の予約一覧を取得するクエリを生成する(予約年月日);
+            var queryWithParameter = QueryBuilder.指定された日の予約一覧を取得するクエリを生成する(予約年月日);
 
             var data = DBから予約の一覧を取ってくる(queryWithParameter.template,
                                                     queryWithParameter.parameter,
@@ -58,28 +48,6 @@ namespace DapperSQLiteInfra
 
             return ドメインオブジェクトに変換する(data);
         }
-
-
-
-        private (QueryTemplate template, QueryParameter parameter) 指定された日の予約一覧を取得するクエリを生成する(予約年月日 予約年月日)
-        {
-            return (SelectReserveSql,
-                new
-                {
-                    DateTimeFrom = $"{予約年月日.Year.ToString()}-{予約年月日.Month.ToString("00")}-{予約年月日.Day.ToString("00")} 00:00:00.000",
-                    DateTimeTo = $"{予約年月日.Year.ToString()}-{予約年月日.Month.ToString("00")}-{予約年月日.Day.ToString("00")} 23:59:59.999",
-                });
-        }
-
-        const string SelectReserveSql =
-            "SELECT" +
-            "  id," +
-            "  room_name, " +
-            "  start_datetime, " +
-            "  end_datetime " +
-            "FROM reserve " +
-            "WHERE start_datetime >= datetime(@DateTimeFrom) " +
-            "AND start_datetime <= datetime(@DateTimeTo)";
         
         private IEnumerable<ReserveTableRow> DBから予約の一覧を取ってくる(QueryTemplate template, QueryParameter parameter, string dataSource)
         {

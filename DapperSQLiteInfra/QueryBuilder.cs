@@ -20,15 +20,15 @@ namespace DapperSQLiteInfra
         }
 
         const string SelectReserveSql =
-            "SELECT" +
-            "  id," +
-            "  room_name, " +
-            "  start_datetime, " +
-            "  end_datetime " +
-            "FROM reserve " +
-            "WHERE start_datetime >= datetime(@DateTimeFrom) " +
-            "AND start_datetime <= datetime(@DateTimeTo)";
-        
+@"SELECT
+  id,
+  room_name, 
+  start_datetime, 
+  end_datetime 
+FROM reserve 
+WHERE start_datetime >= datetime(@DateTimeFrom) 
+AND start_datetime <= datetime(@DateTimeTo)";
+
         
         public static (QueryTemplate template, QueryParameter parameter) 予約を保存するクエリを生成する(予約希望 予約希望)
         {
@@ -44,11 +44,13 @@ namespace DapperSQLiteInfra
                     dapper予約希望);
         }
         
-        const string InsertReserveSql = "Insert INTO reserve VALUES(" +
-                                        "@Id," +
-                                        "@RoomName," +
-                                        "@StartDateTime," +
-                                        "@EndDateTime)";
+        private const string InsertReserveSql =
+@"Insert INTO reserve VALUES(
+ @Id,
+ @RoomName,
+ @StartDateTime,
+ @EndDateTime)";
+        
     }
     
     

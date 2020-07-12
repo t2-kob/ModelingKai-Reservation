@@ -26,7 +26,7 @@ namespace Cli
             var host = CreateHostBuilder().Build();
 
 
-            var dataStoreInitializer = host.Services.GetRequiredService<IDataStoreIntitalizer>();
+            var dataStoreInitializer = host.Services.GetRequiredService<IDataStoreInitializer>();
             dataStoreInitializer.CreateDataStore();
 
             var application = host.Services.GetRequiredService<IApplication>();
@@ -55,7 +55,7 @@ namespace Cli
                     // collection.Configure<SampleSettings>(context.Configuration.GetSection(nameof(SampleSettings)));
 
                     // RepositoryのDI設定
-                    collection.AddTransient<IDataStoreIntitalizer, SqliteInitializer>();
+                    collection.AddTransient<IDataStoreInitializer, SqliteInitializer>();
                     collection.AddTransient<I予約希望Repository, SQLite予約希望Repository>();
 
                     // ApplicationのDI設定

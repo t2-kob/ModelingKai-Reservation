@@ -18,7 +18,7 @@ namespace Test
     public class DapperSQLite予約希望RepositoryTest : IDisposable
     {
         private readonly ITestOutputHelper output;
-        private readonly IDataStoreIntitalizer dbInitializer;
+        private readonly IDataStoreInitializer dbInitializer;
 
 
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SQLiteInfra
 {
-    public class SqliteInitializer : IDataStoreIntitalizer
+    public class SqliteInitializer : IDataStoreInitializer
     {
         public void CleanUpDateStore()
         {

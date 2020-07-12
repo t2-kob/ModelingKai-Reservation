@@ -4,8 +4,6 @@ using System;
 namespace Reservation.Domain.Reservations.Period {
     public class 予約期間 {
 
-        //TODO: ルール: 日をまたいではいけない　とかあるよ。
-
         private readonly 予約開始日時 _開始日時;
         private readonly 予約終了日時 _終了日時;
 

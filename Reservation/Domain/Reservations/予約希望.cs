@@ -12,6 +12,11 @@ namespace Reservation.Domain.Reservations
 
         public 予約希望(MeetingRoom room, ReserverId reserverId, 予約期間 range, 想定使用人数 想定使用人数)
         {
+            // TODO:「ルール5: 会議室を予約できるのは、使用したい日の30日前(休日も込み)とする。時間帯は関係なし」
+            //    ===> 期間外だったらそもそも「不正な予約希望」とする。そもそも作らせない(Exception)
+            // 
+
+
             this.room = room;
             this.range = range;
             this.想定使用人数 = 想定使用人数;

@@ -20,6 +20,7 @@ namespace Reservation.Domain.Reservations.Period
 
 
         public 予約終了日時(予約年月日 年月日, 予約終了_時 時, 予約_分 分) {
+
             this.年月日 = 年月日;
             this.時 = 時;
             this.分 = 分;

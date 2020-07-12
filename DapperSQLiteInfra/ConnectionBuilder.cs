@@ -1,5 +1,6 @@
 using System.Data.Common;
 using System.Data.SQLite;
+using hogehogehogehoge;
 
 namespace DapperSQLiteInfra
 {
@@ -18,10 +19,5 @@ namespace DapperSQLiteInfra
             return new SQLiteConnection(sqlConnectionSb.ToString());
         }
         
-    }
-
-    public interface IConnectionBuilder
-    {
-        DbConnection CreateDbConnection();
     }
 }

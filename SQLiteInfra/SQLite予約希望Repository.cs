@@ -27,7 +27,7 @@ namespace SQLiteInfra
                         "@START_DATE_TIME," +
                         "@END_DATE_TIME)";
 
-                    // if 予約希望.Room.AsString() == hogehoge みたいなこと書けるぜ
+                    // if 予約希望.Room.AsString() == hogehogehogehoge みたいなこと書けるぜ
                     // if 予約希望.Room.ToString() これだと、なにが返ってくるかわからない？
                     // ToString()が返すなのかが、クラス名なのか、会議室名なのか、わかりづらい？？
 

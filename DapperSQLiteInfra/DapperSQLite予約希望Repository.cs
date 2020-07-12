@@ -7,6 +7,7 @@ using Reservation.Domain.Reservations.MeetingRooms;
 using Reservation.Domain.Reservations.Period;
 using Dapper;
 using System.Text;
+using hogehogehogehoge;
 using QueryTemplate = System.String;
 using QueryParameter = System.Object;
 

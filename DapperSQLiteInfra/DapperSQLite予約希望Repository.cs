@@ -14,9 +14,9 @@ namespace DapperSQLiteInfra
 {
     public class DapperSQLite予約希望Repository : I予約希望Repository
     {
-        private readonly ConnectionBuilder _connectionBuilder;
+        private readonly IConnectionBuilder _connectionBuilder;
 
-        public DapperSQLite予約希望Repository(ConnectionBuilder connectionBuilder) {
+        public DapperSQLite予約希望Repository(IConnectionBuilder connectionBuilder) {
             _connectionBuilder = connectionBuilder;
         }
         

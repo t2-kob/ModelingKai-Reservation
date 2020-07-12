@@ -3,7 +3,7 @@ using System.Data.SQLite;
 
 namespace DapperSQLiteInfra
 {
-    public class ConnectionBuilder
+    public class ConnectionBuilder : IConnectionBuilder
     {
         private readonly string _dbFileName;
         
@@ -18,5 +18,10 @@ namespace DapperSQLiteInfra
             return new SQLiteConnection(sqlConnectionSb.ToString());
         }
         
+    }
+
+    public interface IConnectionBuilder
+    {
+        DbConnection CreateDbConnection();
     }
 }

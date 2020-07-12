@@ -12,19 +12,14 @@ using QueryParameter = System.Object;
 
 namespace DapperSQLiteInfra
 {
-
-
     public class DapperSQLite予約希望Repository : I予約希望Repository
     {
-        private readonly string _dbFileName;
+        private readonly ConnectionBuilder _connectionBuilder;
 
-        public DapperSQLite予約希望Repository(string dbFileName) {
-            _dbFileName = dbFileName;
+        public DapperSQLite予約希望Repository(ConnectionBuilder connectionBuilder) {
+            _connectionBuilder = connectionBuilder;
         }
- 
-
-
-
+        
         public void Save(予約希望 予約希望)
         {
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
@@ -32,15 +27,13 @@ namespace DapperSQLiteInfra
             var queryWithParameter = QueryBuilder.予約を保存するクエリを生成する(予約希望);
             
             DBにSaveする(queryWithParameter.template,
-                        queryWithParameter.parameter,
-                        _dbFileName);
+                        queryWithParameter.parameter);
         }
 
-        private void DBにSaveする(string template, object parameter, string dbFileName)
+        private void DBにSaveする(string template, object parameter)
         {
-            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = dbFileName };
 
-            using var cn = new SQLiteConnection(sqlConnectionSb.ToString());
+            using var cn = _connectionBuilder.CreateDbConnection();
             cn.Open();
             cn.Execute(template, parameter);
         }
@@ -50,16 +43,14 @@ namespace DapperSQLiteInfra
             var queryWithParameter = QueryBuilder.指定された日の予約一覧を取得するクエリを生成する(予約年月日);
 
             var data = DBから予約の一覧を取ってくる(queryWithParameter.template,
-                                                    queryWithParameter.parameter,
-                                                    _dbFileName);
+                                                    queryWithParameter.parameter);
 
             return ドメインオブジェクトに変換する(data);
         }
         
-        private IEnumerable<ReserveTableRow> DBから予約の一覧を取ってくる(QueryTemplate template, QueryParameter parameter, string dataSource)
+        private IEnumerable<ReserveTableRow> DBから予約の一覧を取ってくる(QueryTemplate template, QueryParameter parameter)
         {
-            var sqlConnectionSb = new SQLiteConnectionStringBuilder { DataSource = dataSource };
-            using var cn = new SQLiteConnection(sqlConnectionSb.ToString());
+            using var cn = _connectionBuilder.CreateDbConnection();
 
             cn.Open();
             return cn.Query<ReserveTableRow>(template, parameter);

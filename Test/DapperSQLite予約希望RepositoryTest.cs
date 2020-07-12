@@ -53,8 +53,8 @@ namespace Test
         {
             // SQLite予約希望Repositoryが、一番はじめに初期化されたとき？
             // DBファイル作る？
-        
-            var repository = new DapperSQLite予約希望Repository("reserve.db");
+            var せつぞく = new ConnectionBuilder("reserve.db");
+            var repository = new DapperSQLite予約希望Repository(せつぞく);
 
             // SQLiteInfra/reserve.db みたいなのができてほしい。
             // とりあえず目視でいいか
@@ -67,9 +67,8 @@ namespace Test
         public void 新規予約をして予約一覧に予約があること()
         {
             // TODO: テスト名
-            
-            var repository = new DapperSQLite予約希望Repository("reserve.db");
-
+            var せつぞく = new ConnectionBuilder("reserve.db");
+            var repository = new DapperSQLite予約希望Repository(せつぞく);
             var meetingRoom = new MeetingRoom(MeetingRoomName.A);
 
             予約開始日時 予約開始日時 = new 予約開始日時(new 予約年月日(2020, 5, 23), 予約開始_時._10, 予約_分._00);

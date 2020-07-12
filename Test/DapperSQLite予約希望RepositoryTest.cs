@@ -54,7 +54,7 @@ namespace Test
             // SQLite予約希望Repositoryが、一番はじめに初期化されたとき？
             // DBファイル作る？
         
-            var repository = new DapperSQLite予約希望Repository();
+            var repository = new DapperSQLite予約希望Repository("reserve.db");
 
             // SQLiteInfra/reserve.db みたいなのができてほしい。
             // とりあえず目視でいいか
@@ -68,7 +68,7 @@ namespace Test
         {
             // TODO: テスト名
             
-            var repository = new DapperSQLite予約希望Repository();
+            var repository = new DapperSQLite予約希望Repository("reserve.db");
 
             var meetingRoom = new MeetingRoom(MeetingRoomName.A);
 

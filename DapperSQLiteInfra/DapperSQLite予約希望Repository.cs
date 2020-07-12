@@ -16,7 +16,14 @@ namespace DapperSQLiteInfra
 
     public class DapperSQLite予約希望Repository : I予約希望Repository
     {
-        const string DB_FILE_NAME = "reserve.db";
+        private readonly string _dbFileName;
+
+        public DapperSQLite予約希望Repository(string dbFileName) {
+            _dbFileName = dbFileName;
+        }
+ 
+
+
 
         public void Save(予約希望 予約希望)
         {
@@ -26,7 +33,7 @@ namespace DapperSQLiteInfra
             
             DBにSaveする(queryWithParameter.template,
                         queryWithParameter.parameter,
-                        DB_FILE_NAME);
+                        _dbFileName);
         }
 
         private void DBにSaveする(string template, object parameter, string dbFileName)
@@ -44,7 +51,7 @@ namespace DapperSQLiteInfra
 
             var data = DBから予約の一覧を取ってくる(queryWithParameter.template,
                                                     queryWithParameter.parameter,
-                                                    DB_FILE_NAME);
+                                                    _dbFileName);
 
             return ドメインオブジェクトに変換する(data);
         }
